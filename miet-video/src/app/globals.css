@@ -4,7 +4,7 @@
   --background-end-rgb: 5, 5, 5;
 
   --header-font-rgb: 33, 33, 196;
-  --header-font-rgb: 108, 108, 255;
+  --header-font-hover-rgb: 108, 108, 255;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +18,10 @@
   }
 }
 
+* {
+  margin: 0px;
+}
+
 html {
   height: 100vh;
 }
@@ -26,7 +30,6 @@ body {
   height: 100%;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
-  margin: 0px;
 }
 
 .main-color {
@@ -49,4 +52,25 @@ body {
 .space-bettwen-content {
   display: flex;
   justify-content: space-between;
+}
+
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+
+.total-centralize-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-from-right-to-left {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.hide-button {
+  background-color: rgba(240, 248, 255, 0);
+  border: 0px;
 }

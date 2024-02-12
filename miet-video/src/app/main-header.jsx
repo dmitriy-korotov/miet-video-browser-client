@@ -1,17 +1,26 @@
+'use client';
+
 import Logo from "./logo";
 import HeaderButton from "./header_button";
 
 
 
 const MainHeader = () => {
+
+    const RedirectToRegistration = () => {
+        window.location.href = "/registration";
+    }
+
     return (
-        <nav id="main-navigation">
-            <div id="main-logo">
+        <nav id="main-header" className="common-header">
+            <div>
                 <Logo/>
             </div>
             <div className="content-in-line space-bettwen-content">
                 <HeaderButton text="Auth" />
-                <HeaderButton text="Registration" />
+                <div onClick={RedirectToRegistration}>
+                    <HeaderButton text="Registration" />
+                </div>
             </div>
         </nav>
     );

@@ -1,15 +1,15 @@
-import { redirect } from "next/navigation";
-
 const Logo = () => {
 
     const redirectToHomePage = () => {
-        redirect("/");
+        window.location.href = "/";
     }
 
     return (
-        <div className="main-color main-color-hover main-transition" onClick={redirectToHomePage}>
-            <h1>MIET Video</h1>
-        </div>
+        <button className="hide-button" type="button" onClick={redirectToHomePage}>
+            <div className="main-color main-color-hover main-transition main-logo-font-size">
+                <h1>MIET Video</h1>
+            </div>
+        </button>
     );
 }
 
