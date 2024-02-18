@@ -29,7 +29,7 @@ html {
 body {
   height: 100%;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+  background-image: linear-gradient(-45deg, #181818 0%, #131313 100%);
 }
 
 .main-color {

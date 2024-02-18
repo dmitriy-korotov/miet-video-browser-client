@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "../player.css";
 import "./video-information-part.css";
 import "./video-list.css";
-import "./lectures.css";
+import "./player.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

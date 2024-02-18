@@ -22,19 +22,22 @@ const MainHeader: NextPage<Props> = (props) => {
     }
 
     return (
-        <nav id="main-header" className="common-header">
-            <div>
-                <div className="content-in-line total-centralize-content" style={{"gap": "10px"}}>
-                    <Logo/>
+        <div>
+            <nav id="main-header" className="common-header">
+                <div>
+                    <div className="content-in-line total-centralize-content" style={{"gap": "10px"}}>
+                        <Logo/>
+                    </div>
                 </div>
-            </div>
-            <div className="content-in-line space-bettwen-content" style={{"gap": "10px"}}>
-                <HeaderButton text="Auth" />
-                <div onClick={RedirectToRegistration}>
-                    <HeaderButton text="Registration" />
+                <div className="content-in-line space-bettwen-content" style={{"gap": "10px"}}>
+                    <HeaderButton text="Auth" />
+                    <div onClick={RedirectToRegistration}>
+                        <HeaderButton text="Registration" />
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+            <div className="main-header-space"></div>
+        </div>
     );
 }
 

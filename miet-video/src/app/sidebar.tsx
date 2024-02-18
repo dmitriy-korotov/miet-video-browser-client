@@ -1,26 +1,8 @@
-import { NextPage } from "next";
+'use client';
 
 
 
-interface Props
-{
-    is_closed: boolean;
-}
-
-
-
-const Sidebar: NextPage<Props> = (props) => {
-
-    const { is_closed } = props;
-
-    /*
-       <div className="sidebar" style={{
-            "left": ((is_closed) ? "-500px" : "0px")
-        }}>
-
-        </div>
-     */
-
+const Sidebar = () => {
     return (
         <div className="sidebar-body">
             <div>
@@ -30,17 +12,17 @@ const Sidebar: NextPage<Props> = (props) => {
               <i className="fas fa-times" id="cancel"></i>
             </label>
             <div className="sidebar">
-              <a href="#" className="active">
+              <a href="/" className="active">
                 <i className="fas fa-qrcode"></i>
-                <span>Menu</span>
+                <span>Nome</span>
               </a>
               <a href="#">
                 <i className="fas fa-link"></i>
                 <span>Shortcuts</span>
               </a>
-              <a href="#">
+              <a href="/lectures">
                 <i className="fas fa-stream"></i>
-                <span>Overview</span>
+                <span>Lectures</span>
               </a>
               <a href="#">
                  <i className="fas fa-calendar"></i>

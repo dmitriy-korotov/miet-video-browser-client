@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from "../logo";
+import Sidebar from "../sidebar";
 import VideoInforamtionPart from "./video-information-part";
 import VideoList from "./video-list";
 
@@ -14,6 +15,8 @@ const LecturesPage = () => {
                     <Logo />
                 </div>
             </nav>
+            <div className="main-header-space"></div>
+            <Sidebar />
             <div className="main-lectures">
                 <VideoInforamtionPart />
                 <VideoList />
