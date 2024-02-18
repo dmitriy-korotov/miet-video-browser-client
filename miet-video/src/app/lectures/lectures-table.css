@@ -1,0 +1,16 @@
+.lectures-table {
+    margin-bottom: 30px;
+    padding: 30px;
+    border: solid 2px rgb(0, 10, 88);
+    background-color: rgb(28, 28, 28);
+    width: 100%;
+    border-radius: 50px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+
+    justify-content: center;
+    align-items: center;
+}

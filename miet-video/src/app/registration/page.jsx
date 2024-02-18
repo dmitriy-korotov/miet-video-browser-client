@@ -13,6 +13,7 @@ export default function Reqistration() {
                     <Logo />
                 </div>
             </nav>
+            <div className="main-header-space"></div>
             <div className="total-centralize-content">
                 <RegistrationForm />
             </div>

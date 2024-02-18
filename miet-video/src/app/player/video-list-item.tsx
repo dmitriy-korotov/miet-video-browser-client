@@ -20,7 +20,7 @@ const VideoListItem: NextPage<VideoListItemProps> = (item_props) => {
     return (
         <div className="video-list-item">
             <div className="video-item-preview">
-                <Image src={previewSrc} width={width} height={height} alt={title}></Image>
+                <Image src={previewSrc} width={width} height={height} alt={title} placeholder="blur" blurDataURL={previewSrc}></Image>
             </div>
             <div>
                 <h4>{title}</h4>

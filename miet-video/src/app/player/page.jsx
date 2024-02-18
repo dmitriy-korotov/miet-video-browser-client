@@ -7,7 +7,7 @@ import VideoList from "./video-list";
 
 
 
-const LecturesPage = () => {   
+const PlayerPage = () => {   
     return (
         <div className="full-size">
             <nav className="common-header">
@@ -25,4 +25,4 @@ const LecturesPage = () => {
     );
 }
 
-export default LecturesPage;
+export default PlayerPage;
