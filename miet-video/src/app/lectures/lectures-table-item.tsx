@@ -23,8 +23,8 @@ const LecturesTableItem: NextPage<ItemProps> = (props) => {
                 <div className="lectures-table-item">
                     <Image src={previewRef} width={240} height={180} alt={title} style={{ "alignSelf": "center" }} />
                     <div>
-                        <span>{title}</span>
-                        <span>{date}</span>
+                        <span className="title">{title}</span>
+                        <span className="date">{date}</span>
                     </div>
                 </div>
             </a>

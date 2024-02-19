@@ -32,9 +32,9 @@ const Sidebar = () => {
                 <i className="far fa-question-circle"></i>
                 <span>About</span>
               </a>
-              <a href="#">
+              <a href="/upload">
                 <i className="fas fa-sliders-h"></i>
-                <span>Services</span>
+                <span>Upload</span>
               </a>
               <a href="#">
                 <i className="far fa-envelope"></i>

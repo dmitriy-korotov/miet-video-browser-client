@@ -27,6 +27,14 @@
     transition: 0.5s ease;
 }
 
+.lectures-table-item span.title {
+    font-size: 22px;
+}
+
+.lectures-table-item span.date {
+    font-size: 12px;
+}
+
 .lectures-table-item-wrapper:hover span {
     color: aqua;
 }

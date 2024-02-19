@@ -42,7 +42,7 @@
     left: 0;
     width: 300px;
     height: 42px;
-    margin: 100px auto 0 auto;
+    margin: 90px auto 0 auto;
     z-index: 1;
   }
   
@@ -114,6 +114,7 @@
   }
   
   .options {
+    z-index: 3;
     position: absolute;
     left: 0;
     width: 250px;
