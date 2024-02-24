@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, FormEvent } from 'react';
 
 import LoginField from "./login-field";
@@ -6,7 +8,7 @@ import Button from './button';
 
 
 
-const RegistrationForm = () => {
+const AuthForm = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -32,25 +34,33 @@ const RegistrationForm = () => {
         }
     }
 
+    const RedirectToRegistration = () => {
+        window.location.href="/registration";
+    }
+
     return (
         <form method="POST" onSubmit={SubmitHandler}>
             <div className="form-wrapper">
                 <div className='total-centralize-content auth-registration-font'>
-                    <span>Registration</span>
+                    <span>Authorization</span>
                 </div>
                 <br/>
                 <LoginField />
                 <br/>
                 <PasswordField placeholder="Input your password..."/>
                 <br/>
-                <PasswordField placeholder="Repeat your password..."/>
-                <br/>
                 <div className='content-from-right-to-left'>
                     <Button text="Submit"/>
+                </div>
+                <br/>
+                <div onClick={RedirectToRegistration}
+                     className='total-centralize-content ref-to-registrate-color'
+                     style={{"fontSize": "0.9em"}}>
+                    <span>Is not registrated yet?</span>
                 </div>
             </div>
         </form>
     );
 } 
 
-export default RegistrationForm;
+export default AuthForm;

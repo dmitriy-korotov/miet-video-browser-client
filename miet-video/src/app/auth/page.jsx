@@ -1,7 +1,7 @@
 'use client';
 
 import Logo from "../logo";
-import RegistrationForm from "./registration-form";
+import AuthForm from "./auth-form";
 
 
 
@@ -13,7 +13,7 @@ export default function Reqistration() {
             </nav>
             <div className="main-header-space"></div>
             <div className="total-centralize-content" style={{"height": "90%"}}>
-                <RegistrationForm />
+                <AuthForm />
             </div>
         </div>
     );

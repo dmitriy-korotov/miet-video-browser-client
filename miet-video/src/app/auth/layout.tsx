@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 
-import "./registration-form.css";
-import "./registration.css";
+import "./auth-form.css";
+import "./auth.css";
 
 
 
@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 
-export default function RegistrationLayout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

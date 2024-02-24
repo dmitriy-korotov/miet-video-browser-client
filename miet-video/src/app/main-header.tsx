@@ -11,6 +11,10 @@ const MainHeader = () => {
         window.location.href = "/registration";
     }
 
+    const RedirectToAuthorization = () => {
+        window.location.href = "/auth";
+    }
+
     return (
         <div>
             <nav id="main-header" className="common-header">
@@ -18,7 +22,9 @@ const MainHeader = () => {
                     <Logo/>
                 </div>
                 <div id="registration-auth-block" className="content-in-line space-bettwen-content" style={{"gap": "10px"}}>
-                    <HeaderButton text="Auth" />
+                    <div onClick={RedirectToAuthorization}>
+                        <HeaderButton text="Auth" />
+                    </div>
                     <div onClick={RedirectToRegistration}>
                         <HeaderButton text="Registration" />
                     </div>
