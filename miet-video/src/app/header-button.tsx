@@ -11,7 +11,7 @@ const HeaderButton: NextPage<Props> = (props) => {
     const { text } = props;
 
     return (
-        <button className="header-button main-color main-color-hover main-transition">
+        <button className="main-logo-font header-button main-color main-color-hover main-transition" style={{"fontSize": "1.4em"}}>
             <span>{text}</span>
         </button>
     );

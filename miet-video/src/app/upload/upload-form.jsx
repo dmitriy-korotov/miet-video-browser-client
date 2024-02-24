@@ -3,6 +3,12 @@ import UploadPreviewInput from "./upload-preview-input";
 import UploadVideoInput from "./upload-video-input";
 import TitleInput from "./title-input";
 import SubmitButton from "./submit-button";
+import { useRef } from "react";
+
+
+
+
+const videoInputRef = useRef();
 
 
 
@@ -11,7 +17,7 @@ const UploadForm = () => {
         <div className="upload-body">
             <SubjectsList />
             <TitleInput />
-            <UploadVideoInput />
+            <UploadVideoInput ref={useRef} />
             <UploadPreviewInput />
             <SubmitButton />
         </div>

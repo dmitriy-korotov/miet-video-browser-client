@@ -30,10 +30,10 @@
   .sidebar {
     z-index: 5;
     position: fixed;
-    top: 9%;
+    top: 10%;
     width: 240px;
     left: -240px;
-    height: 91%;
+    height: 90%;
     background-color: #1f1f1f;
     transition: all .5s ease;
   }
@@ -79,7 +79,7 @@
   
   .sidebar-body label #btn,label #cancel{
     position: absolute;
-    top: 8.5%;
+    top: 9.3%;
     left: 0px;
     cursor: pointer;
     color: #2060ce;
