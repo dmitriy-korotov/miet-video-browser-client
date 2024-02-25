@@ -1,6 +1,12 @@
 .lectures-body {
+    font-family: Trebuchet MS, sans-serif;
     width: 100%;
-    padding: 8% 4% 2% 4%;
+    padding: 150px 4% 2% 4%;
     box-sizing: border-box;
-    height: 91%;
+}
+
+.no-more-video {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    margin-top: 30px;
+    color: rgb(180, 180, 180);
 }

@@ -2,17 +2,20 @@
 
 import Logo from "./logo";
 import HeaderButton from "./header-button";
+import { useRouter } from "next/navigation";
 
 
 
 const MainHeader = () => {
 
+    const { push } = useRouter();
+
     const RedirectToRegistration = () => {
-        window.location.href = "/registration";
+        push("/registration");
     }
 
     const RedirectToAuthorization = () => {
-        window.location.href = "/auth";
+        push("/auth");
     }
 
     return (

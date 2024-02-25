@@ -1,5 +1,7 @@
 'use client';
 
+import Link from "next/link";
+
 
 
 const Sidebar = () => {
@@ -7,39 +9,39 @@ const Sidebar = () => {
         <div className="sidebar-body">
             <div>
             <input type="checkbox" id="check" />
-            <label for="check">
+            <label htmlFor="check">
               <i className="fas fa-bars" id="btn"></i>
               <i className="fas fa-times" id="cancel"></i>
             </label>
             <div className="sidebar">
-              <a href="/" className="active">
+              <Link href="/" className="active">
                 <i className="fas fa-qrcode"></i>
                 <span>Nome</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <i className="fas fa-link"></i>
                 <span>Shortcuts</span>
-              </a>
-              <a href="/lectures">
+              </Link>
+              <Link href="/lectures">
                 <i className="fas fa-stream"></i>
                 <span>Lectures</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                  <i className="fas fa-calendar"></i>
                 <span>Events</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <i className="far fa-question-circle"></i>
                 <span>About</span>
-              </a>
-              <a href="/upload">
+              </Link>
+              <Link href="/upload">
                 <i className="fas fa-sliders-h"></i>
                 <span>Upload</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <i className="far fa-envelope"></i>
                 <span>Contact</span>
-              </a>
+              </Link>
             </div>
         </div>  
         </div>

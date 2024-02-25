@@ -1,4 +1,4 @@
-import SubjectsList from "../lectures/subjects_list";
+import SubjectsList from "../lectures/subjects-list";
 import UploadPreviewInput from "./upload-preview-input";
 import UploadVideoInput from "./upload-video-input";
 import TitleInput from "./title-input";
@@ -7,12 +7,10 @@ import { useRef } from "react";
 
 
 
-
-const videoInputRef = useRef();
-
-
-
 const UploadForm = () => {
+
+    const videoInputRef = useRef();
+
     return (
         <div className="upload-body">
             <SubjectsList />

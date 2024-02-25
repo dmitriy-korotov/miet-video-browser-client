@@ -1,11 +1,15 @@
-import Image from "next/image";
+'use client';
+
+import { useRouter } from "next/navigation";
 
 
 
 const Logo = () => {
 
+    const { push } = useRouter();
+
     const redirectToHomePage = () => {
-        window.location.href = "/";
+        push("/");
     }
 
     return (

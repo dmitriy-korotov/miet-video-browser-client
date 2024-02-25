@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -19,15 +20,17 @@ const LecturesTableItem: NextPage<ItemProps> = (props) => {
 
     return (
         <div className="lectures-table-item-wrapper">
-            <a href={videoRef}>
+            <Link href={videoRef}>
                 <div className="lectures-table-item">
-                    <Image src={previewRef} width={240} height={180} alt={title} style={{ "alignSelf": "center" }} />
+                    <Image className="video-preview" src={previewRef}
+                           width={360} height={270} alt={title}
+                           style={{ "alignSelf": "center" }} />
                     <div>
                         <span className="title">{title}</span>
                         <span className="date">{date}</span>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }

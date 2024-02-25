@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 
 import "./lectures.css";
-import "./subjects_list.css";
+import "./subjects-list.css";
 import "./lectures-table.css";
 import "./lectures-table-item.css";
 

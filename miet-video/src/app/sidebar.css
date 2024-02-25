@@ -34,8 +34,11 @@
     width: 240px;
     left: -240px;
     height: 90%;
-    background-color: #1f1f1f;
+    background-color: #181818;
     transition: all .5s ease;
+
+    box-sizing: border-box;
+    border-right: solid 1px rgb(36, 36, 36);
   }
   
   .sidebar header{
@@ -52,18 +55,22 @@
     display: block;
     height: 65px;
     width: 100%;
-    color: #0049e8;
+    color: #005fd3;
     line-height: 65px;
     padding-left: 30px;
     box-sizing: border-box;
     border-left: 5px solid transparent;
     font-family: 'Lato', sans-serif;
     transition: all .5s ease;
+
+    border-right: solid 1px rgb(36, 36, 36);
+    border-bottom: solid 1px rgb(36, 36, 36);
+    border-top: solid 1px rgb(36, 36, 36);
   }
 
   .sidebar a.active, a:hover{
     border-left: 5px solid var(--accent-color);
-    color: #fff;
+    color: #81ffff;
      background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
   }
 
@@ -78,7 +85,7 @@
   }
   
   .sidebar-body label #btn,label #cancel{
-    position: absolute;
+    position: fixed;
     top: 9.3%;
     left: 0px;
     cursor: pointer;

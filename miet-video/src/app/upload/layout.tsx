@@ -8,7 +8,7 @@ import "./upload.css";
 import "./upload-form.scss";
 import "./upload-preview-input.scss";
 import "./upload-video-input.scss";
-import "../lectures/subjects_list.css";
+import "../lectures/subjects-list.css";
 import "./title-input.scss";
 import "./submit-button.css";
 
