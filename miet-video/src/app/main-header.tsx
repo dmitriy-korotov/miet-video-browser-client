@@ -19,7 +19,7 @@ const MainHeader = () => {
     }
 
     return (
-        <div>
+        <div className="main-header-space">
             <nav id="main-header" className="common-header">
                 <div className="content-in-line total-centralize-content" style={{"gap": "10px"}}>
                     <Logo/>
@@ -33,7 +33,7 @@ const MainHeader = () => {
                     </div>
                 </div>
             </nav>
-            <div className="main-header-space"></div>
+            <div></div>
         </div>
     );
 }

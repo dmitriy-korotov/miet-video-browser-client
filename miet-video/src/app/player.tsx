@@ -23,10 +23,10 @@ const Player: NextPage<VideoProps> = (video_props) => {
     const { height, src, type } = video_props;
 
     return (
-      <video className="main-player" width={width_.width} height={height} controls preload="none">
+      <video className="main-player" width={width_.width} height={height} controls preload="none" poster="/not_found.png">
         <source src={src} type={type} />   
         <track
-          src="/path/to/captions.vtt"
+          src="/miet.png"
           kind="subtitles"
           srcLang="en"
           label="English"
