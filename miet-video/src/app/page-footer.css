@@ -1,0 +1,22 @@
+.page-footer {
+    color: rgb(0, 0, 135);
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: black;
+
+    box-sizing: border-box;
+    border-top: solid 1px rgb(0, 0, 114);
+
+    transition: 0.5s;
+}
+
+.page-footer:hover {
+    color: rgb(0, 46, 173);
+    
+}
