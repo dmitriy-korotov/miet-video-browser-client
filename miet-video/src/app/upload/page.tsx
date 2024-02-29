@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from "../logo";
+import MainHeader from "../main-header";
 import Sidebar from "../sidebar";
 import UploadForm from "./upload-form";
 
@@ -8,12 +9,7 @@ import UploadForm from "./upload-form";
 const LecturesPage = () => {   
     return (
         <div className="full-size">
-            <nav className="common-header">
-                <div>
-                    <Logo />
-                </div>
-            </nav>
-            <div className="main-header-space"></div>
+            <MainHeader/>
             <Sidebar />
             <div className="upload-body">
                 <UploadForm />

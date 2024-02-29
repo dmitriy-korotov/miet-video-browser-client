@@ -5,18 +5,18 @@
 
 // Vars and Reset
 // 
-$theme:       #454cad;
-$dark-text:   #5f6982;
+$theme:       #000dbe;
+$dark-text:   #2f6aff;
 
 h2 {
-  font-family: "Roboto", sans-serif;
+  margin-bottom: 10px;
+  display: block;
   font-size: 26px;
   line-height: 1;
   color: $theme;
   margin-bottom: 0;
 }
 p {
-  font-family: "Roboto", sans-serif;
   font-size: 18px;
   color: $dark-text;
 }
@@ -32,12 +32,11 @@ p {
   label {
     float: left;
     clear: both;
-    width: 100%;
-    padding: 2rem 1.5rem;
+    padding: 20px 50px 20px 50px;
     text-align: center;
-    background: #fff;
+    background: #292929;
     border-radius: 7px;
-    border: 3px solid #eee;
+    border: 3px solid #00006b;
     transition: all .2s ease;
     user-select: none;
 
@@ -65,8 +64,7 @@ p {
       display: none;
     }
     i.fa {
-      font-size: 50px;
-      margin-bottom: 1rem;
+      font-size: 40px;
       transition: all .2s ease-in-out;
     }
   }
@@ -142,7 +140,6 @@ p {
   }
   .btn {
     display: inline-block;
-    margin: .5rem .5rem 1rem .5rem;
     clear: both;
     font-family: inherit;
     font-weight: 700;
@@ -155,7 +152,7 @@ p {
     padding: 0 1rem;
     height: 36px;
     line-height: 36px;
-    color: #fff;
+    color: #d8d8d8;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
     background: $theme;

@@ -7,7 +7,7 @@ body {
 }
 
 .form {
-  width: 400px;
+  width: 300px;
 }
 
 .file-upload-wrapper {
@@ -31,7 +31,7 @@ body {
     display: block;
     width: calc(100% - 40px);
     pointer-events: none;
-    z-index: 20;
+    z-index: 0;
     height: $height - 20px;
     line-height: $height - 20px;
     color: #002fff;
@@ -54,7 +54,7 @@ body {
     background: $defaultColor;
     color: #d4d4d4;
     font-weight: 700;
-    z-index: 25;
+    z-index: 1;
     font-size: 16px;
     line-height: $height;
     padding: 0 15px;
@@ -75,7 +75,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 99;
+    z-index: 0;
     height: $height - 20px;
     margin: 0;
     padding: 0;

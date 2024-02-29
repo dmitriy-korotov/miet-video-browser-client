@@ -12,8 +12,11 @@ const UploadForm = () => {
     const videoInputRef = useRef();
 
     return (
-        <div className="upload-body">
+        <div className="upload-body-inner">
             <SubjectsList />
+            <div className="upload-font" style={{marginBottom: '30px'}}>
+                <span>Uploading form</span>
+            </div>
             <TitleInput />
             <UploadVideoInput ref={useRef} />
             <UploadPreviewInput />

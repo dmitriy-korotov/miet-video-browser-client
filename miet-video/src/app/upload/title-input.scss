@@ -2,6 +2,7 @@ $primary: #0077FF;
 $dark: #ffffff;
 
 .text-input-field .inp {
+  
   position: relative;
   margin: auto;
   width: 100%;
@@ -22,6 +23,7 @@ $dark: #ffffff;
     pointer-events: none;
   }
   .text-input-field .focus-bg {
+  
     position: absolute;
     top: 0;
     left: 0;
@@ -33,13 +35,14 @@ $dark: #ffffff;
     transform-origin: left;
   }
   .text-input-field input[type="text"] {
+    border-radius: 20px;
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
     border: 0;
     font-family: inherit;
-    padding: 16px 12px 0 12px;
-    height: 56px;
+    padding: 5px 12px 5px 12px;
+    height: 40px;
     font-size: 16px;
     font-weight: 400;
     background: rgba($dark,.02);
