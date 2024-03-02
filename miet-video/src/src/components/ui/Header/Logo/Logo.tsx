@@ -6,7 +6,7 @@ import "@/src/components/ui/Header/Logo/Logo.css";
 const Logo = () => {
     return (
         <button id="logo" className="hide-button" type="button">
-            <div className="logo-layout main-color main-color-hover main-transition main-logo-font" style={{"fontSize": "2em"}}>
+            <div className="logo-layout main-color main-color-hover main-transition main-logo-font">
                 <svg className="logo-svg-color" version="1.0" xmlns="http://www.w3.org/2000/svg"
                     width="40.000000pt" height="40.000000pt" viewBox="0 0 1024.000000 1024.000000"
                     preserveAspectRatio="xMidYMid meet">

@@ -4,7 +4,7 @@ import Header from "@/src/components/ui/Header/Header";
 
 
 
-const HeaderProvider: NextPage<{children?: Readonly<React.ReactNode>}> = ({ children }) => {
+const OnlyLogoHeaderProvider: NextPage<{children?: Readonly<React.ReactNode>}> = ({ children }) => {
     return (
         <>
             <Header isOnlyLogo={true}/>
@@ -13,4 +13,4 @@ const HeaderProvider: NextPage<{children?: Readonly<React.ReactNode>}> = ({ chil
     );
 }
 
-export default HeaderProvider;
+export default OnlyLogoHeaderProvider;

@@ -1,0 +1,44 @@
+.form-wrapper .form-title { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: rgb(0, 0, 210);
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 30px;
+
+    margin-bottom: 30px;
+}
+
+.form-wrapper .form-title span {
+    text-shadow: 0px 0px 5px blue; 
+}
+
+.form-wrapper {
+    box-sizing: border-box;
+    background-color: rgb(17, 17, 17);
+    border: solid 2px blue;
+    box-shadow: 0px 0px 15px rgb(55, 22, 204);
+    border-radius: 30px;
+    padding: 30px 7% 30px 7%;
+    width: 300px;
+
+    transition: 0.5s;
+}
+
+.form-wrapper:hover {
+    box-shadow: 0px 0px 30px blue;
+    transform: scale(105%);
+}
+
+@media screen and (min-width: 800px) {
+    .form-wrapper{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-wrapper{
+        width: 300px;
+    }
+}

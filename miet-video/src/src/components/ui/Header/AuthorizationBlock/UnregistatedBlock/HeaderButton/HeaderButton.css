@@ -1,0 +1,24 @@
+.header-button {
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    box-sizing: border-box;
+    border-left: solid 2px blue;
+    border-top: solid 2px blue;
+    padding: 3px 7px 3px 7px;
+    border-radius: 10px;
+    background-color: rgb(17, 17, 17);
+    font-size: 18px;
+
+    transition: 0.5s;
+
+    font-size: 1.4em;
+}
+
+.header-button:hover {
+    border-left: solid 2px  rgb(108, 108, 255);
+    border-top: solid 2px  rgb(108, 108, 255);   
+}
+
+.header-button:active {
+    border-right: solid 2px  rgb(108, 108, 255);
+    border-bottom: solid 2px  rgb(108, 108, 255);   
+}

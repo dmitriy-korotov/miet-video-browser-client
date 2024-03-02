@@ -1,0 +1,37 @@
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 1.0em;
+
+    font-family: Trebuchet MS, sans-serif;
+    color: rgb(31, 31, 255);
+}
+
+.form-text-field-style { 
+    font-family: Trebuchet MS, sans-serif;
+
+    outline: none;
+    color: rgb(114, 160, 185);
+    padding: 3px 7px 3px 7px;
+    border: solid 3px rgb(var(--form-text-field-rgb));
+    border-radius: 10px;
+    background-color: rgb(var(--form-text-field-bg-rgb));
+    display: block;
+
+    width: 86%;
+
+    transition: 0.5s;
+}
+
+.form-text-field-style:focus {
+    border: solid 3px rgb(55, 142, 255);
+}
+
+.form-text-field-style:hover {
+    background-color: rgb(17, 16, 107);
+}
+
+.form-text-field-style::placeholder {
+    color: rgb(0, 0, 0);
+}
