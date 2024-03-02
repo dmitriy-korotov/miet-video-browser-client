@@ -1,0 +1,20 @@
+.logo-layout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    display: block;
+    align-self: center;
+    justify-self: center;
+}
+
+#logo:hover .main-logo-font {
+    text-shadow: 0px 0px 7px rgb(108, 108, 255);
+}
+
+.main-logo-font {
+    text-shadow: 0px 0px 3px blue;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
