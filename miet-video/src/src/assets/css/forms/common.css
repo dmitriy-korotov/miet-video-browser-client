@@ -1,0 +1,7 @@
+:root {
+    --form-text-field-rgb: 10, 13, 82;
+    --form-text-field-bg-rgb: 5, 34, 138;
+
+    --form-text-field-hover-rgb: 0, 6, 89;
+    --form-text-field-bg-hover-rgb: 55, 54, 238;
+}

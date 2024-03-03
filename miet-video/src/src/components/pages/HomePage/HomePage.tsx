@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
         <HeaderProvider>
             <SideBarProvider pageName="Home">
-                <div>Content</div>
+                
             </SideBarProvider>
         </HeaderProvider>
     );

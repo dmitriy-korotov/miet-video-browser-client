@@ -1,3 +1,7 @@
+@import url("@/src/assets/css/forms/common.css");
+
+
+
 .form-label {
     display: block;
     margin-bottom: 10px;
@@ -6,6 +10,10 @@
 
     font-family: Trebuchet MS, sans-serif;
     color: rgb(31, 31, 255);
+}
+
+.form-label-wrapper {
+    cursor: pointer;
 }
 
 .form-text-field-style { 

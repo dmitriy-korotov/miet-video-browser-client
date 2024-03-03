@@ -15,12 +15,15 @@ interface Props {
 
 const TextField: NextPage<Props> = ({ label, type, name, placeholder = ""}) => {
     return (
-        <label htmlFor={name}>
-            <span className="form-label">{label}</span>
+        <>
+            <label htmlFor={name} className="form-label-wrapper">
+                <span className="form-label">{label}</span>
+            </label>
             <input className="form-text-field-style main-transition"
-                   name={name} type={type}
+                   id={name} name={name} type={type}
                    placeholder={placeholder}></input>
-        </label>
+        
+        </>
     );
 }
 
