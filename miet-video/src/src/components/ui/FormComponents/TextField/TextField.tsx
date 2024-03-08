@@ -8,20 +8,23 @@ interface Props {
     label: string
     type: string,
     name: string,
-    placeholder?: string
+    placeholder?: string,
+    hasError?: boolean
+    args?: any
 }
 
 
 
-const TextField: NextPage<Props> = ({ label, type, name, placeholder = ""}) => {
+const TextField: NextPage<Props> = ({ label, type, name, placeholder = "", hasError = false, args}) => {
     return (
         <>
             <label htmlFor={name} className="form-label-wrapper">
-                <span className="form-label">{label}</span>
+                <span className={hasError ? "form-label has-error" : "form-label no-error"}>{label}</span>
             </label>
-            <input className="form-text-field-style main-transition"
+            <input className={hasError ? "form-text-field-style main-transition has-error" :
+                                         "form-text-field-style main-transition no-error"}
                    id={name} name={name} type={type}
-                   placeholder={placeholder}></input>
+                   placeholder={placeholder} { ...args }></input>
         
         </>
     );

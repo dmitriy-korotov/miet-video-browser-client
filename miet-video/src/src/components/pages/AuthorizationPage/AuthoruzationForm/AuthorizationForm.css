@@ -16,3 +16,8 @@
 .ref-to-registrate:hover {
     color: #1750cc;
 }
+
+.input-error {
+    color: rgb(150, 3, 3);
+    font-size: 12px;
+}

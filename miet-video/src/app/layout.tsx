@@ -24,6 +24,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
+        <link rel="icon" href="/miet.svg"/>
       </head>
       <body className={inter.className}>{children}</body>
     </html>

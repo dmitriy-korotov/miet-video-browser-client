@@ -3,3 +3,8 @@
     display: flex;
     flex-direction: row-reverse;
 }
+
+.input-error {
+    color: rgb(150, 3, 3);
+    font-size: 12px;
+}
