@@ -1,21 +1,11 @@
 'use client';
 
-import Logo from "../logo";
-import MainHeader from "../main-header";
-import Sidebar from "../sidebar";
-import UploadForm from "./upload-form";
+import VideoUploadPage from "@/src/components/pages/VideoUploadPage/VideoUploadPage";
 
 
-const LecturesPage = () => {   
-    return (
-        <div className="full-size">
-            <MainHeader/>
-            <Sidebar />
-            <div className="upload-body">
-                <UploadForm />
-            </div>
-        </div>
-    );
+
+const VideoUpload = () => {   
+    return <VideoUploadPage/>;
 }
 
-export default LecturesPage;
+export default VideoUpload;

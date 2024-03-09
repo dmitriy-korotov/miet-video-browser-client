@@ -1,0 +1,26 @@
+div.option {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    position: relative;
+    line-height: 1;
+    transition: 0.3s ease all;
+    z-index: 3;
+
+    padding: 20px 30px 20px 30px;
+
+    border-radius: 20px;
+}
+
+div.option:hover {
+    background-color: rgb(77, 85, 255);
+}
+
+div.option:hover .label {
+    color: #cecece;
+}
+
+.option,
+.label {
+  color: #1a30ae;
+  font-size: 16px;
+}

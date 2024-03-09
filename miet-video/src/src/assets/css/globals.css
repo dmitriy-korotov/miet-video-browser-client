@@ -23,11 +23,11 @@
     padding: 0px;
     text-decoration: none;
   }
-  
-  ::-webkit-scrollbar {
+
+  html::-webkit-scrollbar {
     width: 0.8vw;
     height: 3.3vh;
-    background-color: #0a0a0a;
+    background-color: black;
   
     transition: 0.5s;
   }
@@ -54,6 +54,7 @@
   }
   
   html {
+    
     height: 100vh;
   }
   

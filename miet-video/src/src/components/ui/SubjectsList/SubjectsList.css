@@ -1,0 +1,137 @@
+* {
+  user-select: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.brd {
+  border: 1px solid #1700ab;
+}
+
+#select-box {
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  width: 300px;
+}
+
+#info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: #2d3667;
+  font-size: 16px;
+  text-align: center;
+  padding: 14px;
+  background-color: #f3f9f9;
+}
+
+#app-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 42px;
+  margin: 90px auto 0 auto;
+  z-index: 1;
+}
+
+#select-button {
+  position: relative;
+  height: 16px;
+  padding: 12px 14px;
+  background-color: #191919;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+#select-box:hover #select-button {
+  background-color: #0e0e2c;
+}
+
+#options-view-button {
+  position: relative;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 70px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#selected-value {
+  color: rgb(9, 0, 185);
+  font-size: 16px;
+  line-height: 1;
+  margin-right: 26px;
+}
+
+#chevrons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  padding: 9px 14px;
+}
+
+#chevrons i {
+  display: block;
+  height: 50%;
+  color: #0119a7;
+  font-size: 12px;
+  text-align: right;
+}
+
+#options {
+  z-index: 3;
+  height: 300px;
+  box-sizing: border-box;
+  background-color: rgb(20, 20, 20);
+  margin-top: 5px;
+  position: absolute;
+  width: 300px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 10px;
+
+  overflow-y: scroll;
+}
+
+#options::-webkit-scrollbar {
+  width: 0.8vw;
+  height: 3.3vh;
+  background-color: transparent;
+
+  transition: 0.5s;
+}
+
+.separator {
+  margin-left: 5%;
+  width: 90%;
+  height: 1px;
+  background-color: rgb(46, 46, 46);
+}
+
+.display-none {
+  display: none;
+}
+
+.subjects-list-warapper {
+  font-size: 20px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  color: #0119a7;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

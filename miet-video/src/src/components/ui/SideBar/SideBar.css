@@ -61,7 +61,7 @@
   .sidebar a.active, .sidebar a:hover {
     border-left: 5px solid var(--accent-color);
     color: #81ffff;
-     background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
+    background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
   }
 
   .sidebar a i {
@@ -111,6 +111,16 @@
     margin-left: 245px;
     opacity: 1;
     visibility: visible;
+  }
+
+  #cancel:hover {
+    background-color: rgb(35, 35, 179);
+    color:  rgb(117, 202, 255);
+  }
+
+  .sidebar-body #btn:hover {
+    background-color: rgb(35, 35, 179);
+    color:  rgb(117, 202, 255);
   }
 
   #check {

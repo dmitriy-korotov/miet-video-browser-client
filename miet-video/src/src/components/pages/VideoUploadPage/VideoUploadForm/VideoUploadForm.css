@@ -1,0 +1,9 @@
+.button-to-right {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.file-loader-wrapper {
+    margin-top: 10px;
+}
