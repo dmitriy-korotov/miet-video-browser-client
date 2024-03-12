@@ -55,3 +55,17 @@ export const ValidateRepassword = (repassword: string, password: string): MaybeE
     }
     return new MaybeError();
 }
+
+export const ValidateVideo = (video: File): MaybeError => {
+    if (video.size > 2 * 1024 * 1024 * 1024) {
+        return new MaybeError("Preview file size must be less than 2GB");
+    }
+    return new MaybeError();
+}
+
+export const ValidatePreview = (preview: File): MaybeError => {
+    if (preview.size > 3 * 1024 * 1024) {
+        return new MaybeError("Preview file size must be less than 3MB");
+    }
+    return new MaybeError();
+}

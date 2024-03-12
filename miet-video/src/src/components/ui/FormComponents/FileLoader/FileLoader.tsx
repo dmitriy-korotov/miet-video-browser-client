@@ -4,15 +4,18 @@ import { useState } from "react";
 
 
 
-const FileLoader: NextPage<{ placeholder?: string }> = ({ placeholder = "Select your file!"}) => {
+const FileLoader: NextPage<{ name: string,
+                             accept?: string,
+                             placeholder?: string }> = ({ name, accept = "image/*", placeholder = "Select your file!"}) => {
 
     const [ selectedFile, setSelectedFile ] = useState<File | null>(null);
 
     return (
         <div className="container">
             <div className="file-upload-wrapper" data-text={selectedFile ? selectedFile.name : placeholder}>
-                <input name="file-upload-field"
+                <input name={name}
                        type="file" className="file-upload-field"
+                       accept={accept}
                        onChange={e => {
                             let fileField = e.target as HTMLInputElement;
                             if (!fileField.files) {

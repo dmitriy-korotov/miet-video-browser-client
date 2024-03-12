@@ -7,3 +7,8 @@
 .file-loader-wrapper {
     margin-top: 10px;
 }
+
+.input-error {
+    color: rgb(150, 3, 3);
+    font-size: 12px;
+}
