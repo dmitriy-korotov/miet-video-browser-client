@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 
+import "@/src/assets/css/globals.css";
 import "@/src/components/ui/FormComponents/TextField/TextField.css";
 
 
@@ -24,7 +25,8 @@ const TextField: NextPage<Props> = ({ label, type, name, placeholder = "", hasEr
             <input className={hasError ? "form-text-field-style main-transition has-error" :
                                          "form-text-field-style main-transition no-error"}
                    id={name} name={name} type={type}
-                   placeholder={placeholder} { ...args }></input>
+                   placeholder={placeholder} { ...args }
+                   autoComplete="off"></input>
         
         </>
     );

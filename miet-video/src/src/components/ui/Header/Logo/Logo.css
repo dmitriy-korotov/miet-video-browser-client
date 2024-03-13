@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 .logo-layout {
     display: flex;
     align-items: center;
@@ -17,10 +19,18 @@
 }
 
 #logo:hover .main-logo-font {
-    text-shadow: 0px 0px 7px rgb(108, 108, 255);
+    text-shadow: 0px 0px 7px var(--third-fg-color);
 }
 
 .main-logo-font {
-    text-shadow: 0px 0px 3px blue;
+    text-shadow: 0px 0px 3px var(--second-fg-color);
     font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.logo-color {
+    color: var(--second-fg-color);
+}
+
+.logo-color:hover {
+    color: var(--third-fg-color);
 }

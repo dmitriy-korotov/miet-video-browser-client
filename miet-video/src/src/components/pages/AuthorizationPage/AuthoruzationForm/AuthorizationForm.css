@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 .button-to-right {
     margin-top: 20px;
     display: flex;
@@ -5,19 +7,19 @@
 }
 
 .ref-to-registrate {
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(42, 42, 127);
+    color: var(--second-fg-color);
     transition: 0.5s;
 }
 
 .ref-to-registrate:hover {
-    color: #1750cc;
+    color: var(--third-fg-color);
 }
 
 .input-error {
-    color: rgb(150, 3, 3);
+    color: var(--error-color);
     font-size: 12px;
 }

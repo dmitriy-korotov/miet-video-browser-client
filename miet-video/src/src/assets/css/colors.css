@@ -1,0 +1,10 @@
+:root {
+    --first-bg-color: #000000;
+    --second-bg-color: #0B0718;
+
+    --first-fg-color: #160150;
+    --second-fg-color: #400072;
+    --third-fg-color: #600095;
+
+    --error-color: rgb(213, 58, 58);
+}

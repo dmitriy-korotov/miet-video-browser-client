@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 * {
   user-select: none;
 }
@@ -7,7 +9,7 @@
 }
 
 .brd {
-  border: 1px solid #1700ab;
+  border: 1px solid var(--second-fg-color);
 }
 
 #select-box {
@@ -20,7 +22,7 @@
   top: 0;
   right: 0;
   left: 0;
-  color: #2d3667;
+  color: var(--second-fg-color);
   font-size: 16px;
   text-align: center;
   padding: 14px;
@@ -42,14 +44,10 @@
   position: relative;
   height: 16px;
   padding: 12px 14px;
-  background-color: #191919;
+  background: radial-gradient(var(--first-fg-color), var(--second-bg-color));
   border-radius: 4px;
   cursor: pointer;
   transition: 0.5s ease;
-}
-
-#select-box:hover #select-button {
-  background-color: #0e0e2c;
 }
 
 #options-view-button {
@@ -67,10 +65,14 @@
 }
 
 #selected-value {
-  color: rgb(9, 0, 185);
+  color: var(--second-fg-color);
   font-size: 16px;
   line-height: 1;
   margin-right: 26px;
+}
+
+#select-box:hover #select-value {
+  color: var(--third-fg-color);
 }
 
 #chevrons {
@@ -85,7 +87,7 @@
 #chevrons i {
   display: block;
   height: 50%;
-  color: #0119a7;
+  color: var(--second-fg-color);
   font-size: 12px;
   text-align: right;
 }
@@ -94,11 +96,11 @@
   z-index: 3;
   height: 300px;
   box-sizing: border-box;
-  background-color: rgb(20, 20, 20);
+  background-color: var(--second-bg-color);
   margin-top: 5px;
   position: absolute;
   width: 300px;
-  border: 1px solid blue;
+  border: 1px solid var(--second-fg-color);
   border-radius: 10px;
   padding: 10px;
 
@@ -106,7 +108,7 @@
 }
 
 #options::-webkit-scrollbar {
-  width: 0.8vw;
+  width: 0.5vw;
   height: 3.3vh;
   background-color: transparent;
 
@@ -117,7 +119,7 @@
   margin-left: 5%;
   width: 90%;
   height: 1px;
-  background-color: rgb(46, 46, 46);
+  background-color: var(--second-fg-color);
 }
 
 .display-none {
@@ -127,7 +129,7 @@
 .subjects-list-warapper {
   font-size: 20px;
   font-family: Comic Sans MS, Comic Sans, cursive;
-  color: #0119a7;
+  color: var(--second-fg-color);
 
   display: flex;
   flex-direction: column;

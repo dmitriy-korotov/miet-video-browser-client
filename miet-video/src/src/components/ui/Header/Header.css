@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 #main-header {
     display: flex;
     justify-content: space-between;
@@ -16,9 +18,9 @@
     z-index: 6;
 
     border-bottom: solid 1px;
-    border-color: rgb(0, 2, 110);
+    border-color: var(--second-fg-color);
 
-    background-color: rgb(17, 16, 16);
+    background-color: var(--second-bg-color);
 
     padding: 1% 3% 1% 3%;
 }

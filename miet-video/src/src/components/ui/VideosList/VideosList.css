@@ -1,13 +1,15 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 .videos-list-wrapper {
     margin-bottom: 30px;
     padding: 30px;
-    border: solid 2px rgb(0, 10, 88);
-    background-image: linear-gradient(to bottom, rgb(12, 12, 12), black);
+    border: solid 2px var(--second-fg-color);
+    background-image: linear-gradient(to bottom, var(--second-bg-color), var(--first-bg-color));
     width: 100%;
     border-radius: 50px;
     box-sizing: border-box;
 
-    box-shadow: 0px 0px 15px rgb(3, 3, 67);
+    box-shadow: 0px 0px 15px var(--second-fg-color);
 }
 
 .videos-list {
@@ -20,4 +22,8 @@
 
 .span-margin {
     margin-top: 30px;
+}
+
+.no-more-video {
+    color: var(--second-fg-color);
 }

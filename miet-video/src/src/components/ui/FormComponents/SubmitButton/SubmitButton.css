@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 .auth-registrate-submit-btn {
     box-sizing: border-box;
 
@@ -5,27 +7,22 @@
     height: 45px;
     font-family: Trebuchet MS, sans-serif;
     font-size: 0.9em;   
-    color: #000000;
-    background-color: rgb(var(--form-text-field-bg-rgb));
-    border: solid 2px rgb(0, 0, 103);
+    color: var(--third-fg-color);
+    background: radial-gradient(var(--first-fg-color), 50%, var(--second-bg-color));
+    border: solid 2px var(--second-fg-color);
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: 0.5s;
     cursor: pointer;
     outline: none;
 }
 
 .auth-registrate-submit-btn:hover {
-    background-color: #1750cc;
-    box-shadow: 0px 15px 20px rgba(44, 71, 206, 0.4);
-    color: #fff;
+    box-shadow: 0px 10px 15px var(--third-fg-color);
     transform: translateY(-5px);
 }
 
 .auth-registrate-submit-btn:active {
-    background-color: #0db65f;
-    box-shadow: 0px 15px 20px rgba(14, 127, 80, 0.4);
-    border-color: rgb(21, 68, 41);
-    color: #fff;
+    border-color: var(--third-fg-color);
+    background: radial-gradient(var(--first-fg-color), 70%, var(--second-bg-color));
     transform: translateY(-5px);
 }

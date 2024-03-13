@@ -10,15 +10,14 @@
     gap: 10px;
     border-radius: 10px;
     padding: 15px;
-    background-color: rgb(29, 29, 29);
+    background: linear-gradient(to bottom, var(--first-fg-color), var(--second-bg-color));
     box-sizing: border-box;
     transition: 0.5s ease;
-    border: dashed 2px rgb(0, 0, 0);
+    border: solid 2px rgb(0, 0, 0);
 }
 
 .video-list-item-wrapper:hover .video-list-item {
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    
+    box-shadow: 0px 0px 10px var(--second-fg-color);
 }
 
 .video-list-item .video-preview {
@@ -27,9 +26,9 @@
 
 .video-list-item-wrapper:hover .video-list-item {
     background-color: rgb(6, 0, 28);
-    border: dashed 2px rgb(36, 36, 255);
+    border-color: var(--second-fg-color);
 }
 
 .video-list-item-wrapper:hover span {
-    color: rgb(37, 73, 255);
+    color: var(--third-fg-color);
 }

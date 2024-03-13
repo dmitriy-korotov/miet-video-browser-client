@@ -1,3 +1,5 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
 div.option {
     font-family: Comic Sans MS, Comic Sans, cursive;
 
@@ -8,19 +10,19 @@ div.option {
 
     padding: 20px 30px 20px 30px;
 
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 div.option:hover {
-    background-color: rgb(77, 85, 255);
+    background: radial-gradient(var(--first-fg-color), 30%, var(--second-bg-color));
 }
 
 div.option:hover .label {
-    color: #cecece;
+    color: var(--third-fg-color);
 }
 
 .option,
 .label {
-  color: #1a30ae;
+  color: var(--second-fg-color);
   font-size: 16px;
 }

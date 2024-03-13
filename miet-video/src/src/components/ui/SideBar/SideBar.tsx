@@ -18,7 +18,7 @@ const SideBar: NextPage<Props> = ({ pageName }) => {
             <div>
                 <SideBarButton />
                 <div className="sidebar">
-                    <SideBarItem text={pageName} href="#" isActive={true}/>
+                    <SideBarItem text={pageName} href="#" isActive={false}/>
                     <SideBarItem text="Lectures" href="/lectures"/>
                     <SideBarItem text="Upload" href="/upload"/>
                     <SideBarItem text="About" href="/about"/>

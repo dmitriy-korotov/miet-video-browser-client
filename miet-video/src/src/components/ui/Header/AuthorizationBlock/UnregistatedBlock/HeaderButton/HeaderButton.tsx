@@ -7,7 +7,7 @@ import "@/src/components/ui/Header/AuthorizationBlock/UnregistatedBlock/HeaderBu
 
 const HeaderButton: NextPage<Readonly<{children?: React.ReactNode;}>> = ({children}) => {
     return (
-        <button className="main-logo-font header-button main-color main-color-hover main-transition">
+        <button className="main-logo-font header-button main-transition">
             <span>{children}</span>
         </button>
     );
