@@ -14,6 +14,7 @@ import { ValidatePreview, ValidateVideo } from "@/src/scripts/validations/FormVa
 
 import "@/src/assets/css/globals.css";
 import "@/src/components/pages/VideoUploadPage/VideoUploadForm/VideoUploadForm.css";
+import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 
 
 
@@ -41,7 +42,7 @@ const VideoUploadForm = () => {
         if (!errors.VideoFile) {
             previewInput = data.currentTarget.childNodes.item(4).firstChild?.firstChild?.firstChild as HTMLInputElement;
         } else {
-            previewInput = data.currentTarget.childNodes.item(5).firstChild?.firstChild?.firstChild as HTMLInputElement;
+            previewInput = data.currentTarget.childNodes.item(4).firstChild?.firstChild?.firstChild as HTMLInputElement;
         }
 
         return [ videoInput, previewInput ];
@@ -104,32 +105,23 @@ const VideoUploadForm = () => {
                 <div className="total-centralize-content">
                     <SubjectsList subjects={subjects} initialSelected={subjects[0]}/>
                 </div>
-                <TextField label="Input video title:"
-                        name="title" type="text"
-                        hasError = { !!errors.VideoTitle }
-                        placeholder="input title..."
-                        args={ register("VideoTitle") }/>
-                {errors.VideoTitle && (
-                        <span role='alert' className='input-error'>
-                            {errors.VideoTitle?.message}
-                        </span>
-                    )}
-                <div className="file-loader-wrapper">
-                    <FileLoader name="video" placeholder="Select video" accept="video/*"/>
-                </div>
-                {errors.VideoFile && (
-                        <span role='alert' className='input-error'>
-                            {errors.VideoFile?.message}
-                        </span>
-                    )}
-                <div className="file-loader-wrapper">
-                    <FileLoader name="preview" placeholder="Select preview"/>
-                </div>
-                {errors.PreviewFile && (
-                        <span role='alert' className='input-error'>
-                            {errors.PreviewFile?.message}
-                        </span>
-                    )}
+                <ErrorWindow message={errors.VideoTitle?.message}>
+                    <TextField label="Input video title:"
+                            name="title" type="text"
+                            hasError = { !!errors.VideoTitle }
+                            placeholder="input title..."
+                            args={ register("VideoTitle") }/>    
+                </ErrorWindow>
+                <ErrorWindow message={errors.VideoFile?.message}>
+                    <div className="file-loader-wrapper">
+                        <FileLoader name="video" placeholder="Select video" accept="video/*"/>
+                    </div>
+                </ErrorWindow>
+                <ErrorWindow message={errors.PreviewFile?.message}>
+                    <div className="file-loader-wrapper">
+                        <FileLoader name="preview" placeholder="Select preview"/>
+                    </div>
+                </ErrorWindow>
                 <div className="button-to-right">
                     <SubmitButton type="submit">Submit</SubmitButton>
                 </div>

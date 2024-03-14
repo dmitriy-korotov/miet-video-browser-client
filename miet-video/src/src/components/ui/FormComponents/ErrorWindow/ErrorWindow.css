@@ -1,0 +1,14 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+.error-window {
+    position: absolute;
+    
+    margin-top: 5px;
+    padding: 10px;
+    background-color: var(--second-bg-color);
+    border: 2px solid var(--error-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    z-index: 2;
+}

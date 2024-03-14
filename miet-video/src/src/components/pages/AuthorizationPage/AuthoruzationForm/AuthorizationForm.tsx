@@ -13,6 +13,7 @@ import { UserAuthorizationFormData } from "@/src/types/user/User";
 import { ValidateLogin, ValidatePassword } from "@/src/scripts/validations/FormValidations";
 
 import "@/src/components/pages/AuthorizationPage/AuthoruzationForm/AuthorizationForm.css";
+import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 
 
 
@@ -59,26 +60,20 @@ const AuthorizationForm = () => {
     return (
         <FormWrapper formTitle="Authorization">
             <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
-                <TextField label="Input login:"
-                        type="text" name="login"
-                        placeholder="input login..."
-                        hasError={errors.login ? true : false}
-                        args={ register("login") }/>
-                {errors.login && (
-                    <span role='alert' className='input-error'>
-                        {errors.login?.message}
-                    </span>
-                )}
-                <TextField label="Input password:"
-                        type="password" name="password"
-                        placeholder="input password..."
-                        hasError={errors.password ? true : false}
-                        args={ register("password") }/>
-                {errors.password && (
-                    <span role='alert' className='input-error'>
-                        {errors.password?.message}
-                    </span>
-                )}
+                <ErrorWindow message={errors.login?.message}>
+                    <TextField label="Input login:"
+                                type="text" name="login"
+                                placeholder="input login..."
+                                hasError={errors.login ? true : false}
+                                args={ register("login") }/>
+                </ErrorWindow>
+                <ErrorWindow message={errors.password?.message}>
+                    <TextField label="Input password:"
+                            type="password" name="password"
+                            placeholder="input password..."
+                            hasError={errors.password ? true : false}
+                            args={ register("password") }/>
+                </ErrorWindow>
                 <div className="button-to-right">
                     <SubmitButton type="submit">Submit</SubmitButton>
                 </div>

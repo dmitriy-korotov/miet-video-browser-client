@@ -11,6 +11,7 @@ import { FormEventHandler } from "react";
 import { ValidateLogin, ValidatePassword, ValidateRepassword } from "@/src/scripts/validations/FormValidations";
 
 import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
+import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 
 
 
@@ -67,31 +68,27 @@ const RegistrationForm = () => {
     return (
         <FormWrapper formTitle="Registration">
             <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
-                <TextField label="Input login:"
-                           type="text" name="login"
-                           placeholder="input login..."
-                           hasError={errors.login ? true : false}
-                           args={ register("login") }/>
-                {errors.login && (
-                    <span role='alert' className='input-error'>
-                        {errors.login?.message}
-                    </span>
-                )}
-                <TextField label="Input password:"
-                           type="password" name="pass"
-                           placeholder="input password..."
-                           hasError={errors.password ? true : false}
-                           args={ register("password") }/>
-                {errors.password && (
-                    <span role='alert' className='input-error'>
-                        {errors.password?.message}
-                    </span>
-                )}
-                <TextField label="Repeat password:"
-                           type="password" name="repass"
-                           placeholder="input password..."
-                           hasError={errors.repassword ? true : false}
-                           args={ register("repassword") }/>
+                <ErrorWindow message={errors.login?.message}>
+                    <TextField label="Input login:"
+                            type="text" name="login"
+                            placeholder="example : 1234567"
+                            hasError={errors.login ? true : false}
+                            args={ register("login") }/>    
+                </ErrorWindow>
+                <ErrorWindow message={errors.password?.message}>
+                    <TextField label="Input password:"
+                            type="password" name="pass"
+                            placeholder="input password..."
+                            hasError={errors.password ? true : false}
+                            args={ register("password") }/>
+                </ErrorWindow>
+                <ErrorWindow message={errors.repassword?.message}>
+                    <TextField label="Repeat password:"
+                            type="password" name="repass"
+                            placeholder="input password..."
+                            hasError={errors.repassword ? true : false}
+                            args={ register("repassword") }/>
+                </ErrorWindow>
                 {errors.repassword && (
                     <span role='alert' className='input-error'>
                         {errors.repassword?.message}
