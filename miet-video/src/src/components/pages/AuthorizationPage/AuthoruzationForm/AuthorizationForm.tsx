@@ -39,6 +39,7 @@ const AuthorizationForm = () => {
         let maybeError = ValidateLogin(data.login);
         if (maybeError.HasError()) {
             setError("login", { type: "custom", message: maybeError.GetErrorMessage() });
+            clearErrors("password");
             return false;
         }
         clearErrors("login");
@@ -46,6 +47,7 @@ const AuthorizationForm = () => {
         let result = ValidatePassword(data.password);
         if (result.error.HasError()) {
             setError("password", { type: "custom", message: result.error.GetErrorMessage() });
+            clearErrors("login");
             return false;
         }
         clearErrors("password");
@@ -54,7 +56,7 @@ const AuthorizationForm = () => {
     }
 
     const onChange: FormEventHandler<HTMLFormElement> = (data) => {
-        handleInput({ login: watch("login"), password: watch("password") });
+        handleInput({ login: watch("login"), password: watch("password")});
     }
 
     return (

@@ -17,6 +17,19 @@ class MaybeError {
     }
 }
 
+export const ValidateUsername = (username: string): MaybeError => {
+    if (username.length == 0) {
+        return new MaybeError("Please fill username field");
+    }
+    if (!(/^[a-zA-Z0-9]+$/.test(username))) {
+        return new MaybeError("Username must contans only a-z A-Z 0-9 symbols");
+    }
+    if (username.length < 5) {
+        return new MaybeError("Username length must be greater then 5");
+    }
+    return new MaybeError();
+}
+
 export const ValidateLogin = (login: string): MaybeError => {
     if (login.length == 0) {
         return new MaybeError("Please fill login field");
@@ -34,8 +47,8 @@ export const ValidatePassword = (password: string, repassword?: string): { error
     if (password.length == 0) {
         return { error: new MaybeError("Please fill password field"), isEquals: false };
     }
-    if (!(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) {
-        return { error: new MaybeError("Incorrect password format"), isEquals: false };
+    if (!(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(password))) {
+        return { error: new MaybeError("Password must contains only a-z A-Z 0-9 !@#$%^& cahracters"), isEquals: false };
     }
     if (password.length < 8) {
         return { error: new MaybeError("Password length must be greater then 7"), isEquals: false };

@@ -1,10 +1,12 @@
 export interface UserData {
+    username: string,
     login: string,
     password: string
 }
 
-export interface UserAuthorizationFormData extends UserData {
-
+export interface UserAuthorizationFormData {
+    login: string,
+    password: string
 }
 
 export interface UserRegistrationFormData extends UserData {

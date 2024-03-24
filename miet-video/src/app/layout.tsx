@@ -1,3 +1,4 @@
+import { AuthProvider } from "@/src/components/providers/AuthProvider/AuthProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 

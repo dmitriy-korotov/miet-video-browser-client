@@ -8,10 +8,11 @@ import TextField from "@/src/components/ui/FormComponents/TextField/TextField";
 
 import { UserRegistrationFormData } from "@/src/types/user/User";
 import { FormEventHandler } from "react";
-import { ValidateLogin, ValidatePassword, ValidateRepassword } from "@/src/scripts/validations/FormValidations";
+import { ValidateLogin, ValidatePassword, ValidateRepassword, ValidateUsername } from "@/src/scripts/validations/FormValidations";
 
 import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
 import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
+import { Router } from "next/router";
 
 
 
@@ -26,17 +27,43 @@ const RegistrationForm = () => {
         formState: { errors },
       } = useForm<UserRegistrationFormData>();
     
-    const onSubmit: SubmitHandler<UserRegistrationFormData> = (data) => {
+    const onSubmit: SubmitHandler<UserRegistrationFormData> = async (data) => {
         if (!handleInput(data)) {
             return;
         }
+        /*
+        const response = await fetch("http://localhost:8080/v1/users", {
+            mode: 'no-cors',
+            method: "POST",
+            body: JSON.stringify({
+                username: data.username,
+                login: data.login,
+                password: data.password
+            })
+        });*/
+
+        alert("error")
+
         console.log(data);
     }
 
     const handleInput = (data: UserRegistrationFormData): boolean => {
-        let maybeError = ValidateLogin(data.login);
+        let maybeError = ValidateUsername(data.username);
+        if (maybeError.HasError()) {
+            setError("username", { type: "custom", message: maybeError.GetErrorMessage() });
+            clearErrors("password");    
+            clearErrors("repassword");
+            clearErrors("login");
+            return false;
+        }
+        clearErrors("username");
+        
+        maybeError = ValidateLogin(data.login);
         if (maybeError.HasError()) {
             setError("login", { type: "custom", message: maybeError.GetErrorMessage() });
+            clearErrors("password");    
+            clearErrors("repassword");
+            clearErrors("username");
             return false;
         }
         clearErrors("login");
@@ -44,6 +71,9 @@ const RegistrationForm = () => {
         let result = ValidatePassword(data.password, watch("repassword"));
         if (result.error.HasError()) {
             setError("password", { type: "custom", message: result.error.GetErrorMessage() });
+            clearErrors("login");   
+            clearErrors("repassword");
+            clearErrors("username");
             return false;
         }
         if (result.isEquals) {
@@ -54,6 +84,9 @@ const RegistrationForm = () => {
         maybeError = ValidateRepassword(data.repassword, data.password);
         if (maybeError.HasError()) {
             setError("repassword", { type: "custom", message: maybeError.GetErrorMessage() });
+            clearErrors("login");    
+            clearErrors("password");
+            clearErrors("username");
             return false;
         }
         clearErrors("repassword");
@@ -62,12 +95,20 @@ const RegistrationForm = () => {
     }
 
     const onChange: FormEventHandler<HTMLFormElement> = (data) => {
-        handleInput({ login: watch("login"), password: watch("password"), repassword: watch("repassword") });
+        handleInput({ login: watch("login"), password: watch("password"),
+                      repassword: watch("repassword"), username: watch("username") });
     }
 
     return (
         <FormWrapper formTitle="Registration">
             <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
+                <ErrorWindow message={errors.username?.message}>
+                    <TextField label="Input username:"
+                            type="text" name="username"
+                            placeholder="example : dmitry2004"
+                            hasError={errors.username ? true : false}
+                            args={ register("username") }/>    
+                </ErrorWindow>
                 <ErrorWindow message={errors.login?.message}>
                     <TextField label="Input login:"
                             type="text" name="login"
@@ -89,11 +130,6 @@ const RegistrationForm = () => {
                             hasError={errors.repassword ? true : false}
                             args={ register("repassword") }/>
                 </ErrorWindow>
-                {errors.repassword && (
-                    <span role='alert' className='input-error'>
-                        {errors.repassword?.message}
-                    </span>
-                )}
                 <div className="button-to-right">
                     <SubmitButton type="submit">Submit</SubmitButton>
                 </div>
