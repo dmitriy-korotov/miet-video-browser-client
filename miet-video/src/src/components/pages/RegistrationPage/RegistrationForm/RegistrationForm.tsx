@@ -7,16 +7,19 @@ import SubmitButton from "@/src/components/ui/FormComponents/SubmitButton/Submit
 import TextField from "@/src/components/ui/FormComponents/TextField/TextField";
 
 import { UserRegistrationFormData } from "@/src/types/user/User";
-import { FormEventHandler } from "react";
+import { FormEventHandler, useState } from "react";
 import { ValidateLogin, ValidatePassword, ValidateRepassword, ValidateUsername } from "@/src/scripts/validations/FormValidations";
 
 import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
 import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 import { Router } from "next/router";
+import Checkbox from "@/src/components/ui/FormComponents/Checkbox/Checkbox";
 
 
 
 const RegistrationForm = () => {
+
+    const [ checkboxState, setCheckboxState ] = useState(true);
 
     const {
         register,
@@ -28,6 +31,7 @@ const RegistrationForm = () => {
       } = useForm<UserRegistrationFormData>();
     
     const onSubmit: SubmitHandler<UserRegistrationFormData> = async (data) => {
+        data.checkbox = !checkboxState;
         if (!handleInput(data)) {
             return;
         }
@@ -42,7 +46,7 @@ const RegistrationForm = () => {
             })
         });*/
 
-        alert("error")
+        alert("success");
 
         console.log(data);
     }
@@ -54,6 +58,7 @@ const RegistrationForm = () => {
             clearErrors("password");    
             clearErrors("repassword");
             clearErrors("login");
+            clearErrors("checkbox");
             return false;
         }
         clearErrors("username");
@@ -64,6 +69,7 @@ const RegistrationForm = () => {
             clearErrors("password");    
             clearErrors("repassword");
             clearErrors("username");
+            clearErrors("checkbox");
             return false;
         }
         clearErrors("login");
@@ -74,6 +80,7 @@ const RegistrationForm = () => {
             clearErrors("login");   
             clearErrors("repassword");
             clearErrors("username");
+            clearErrors("checkbox");
             return false;
         }
         if (result.isEquals) {
@@ -87,16 +94,27 @@ const RegistrationForm = () => {
             clearErrors("login");    
             clearErrors("password");
             clearErrors("username");
+            clearErrors("checkbox");
             return false;
         }
         clearErrors("repassword");
+
+        if (!data.checkbox) {
+            setError("checkbox", { type: "custom", message: "Please select checkbox" });
+            clearErrors("login");    
+            clearErrors("password");
+            clearErrors("username");
+            clearErrors("repassword");
+            return false;
+        }
+        clearErrors("checkbox");
 
         return true;
     }
 
     const onChange: FormEventHandler<HTMLFormElement> = (data) => {
         handleInput({ login: watch("login"), password: watch("password"),
-                      repassword: watch("repassword"), username: watch("username") });
+                      repassword: watch("repassword"), username: watch("username"), checkbox: true });
     }
 
     return (
@@ -129,6 +147,12 @@ const RegistrationForm = () => {
                             placeholder="input password..."
                             hasError={errors.repassword ? true : false}
                             args={ register("repassword") }/>
+                </ErrorWindow>
+                <ErrorWindow message={errors.checkbox?.message}>
+                    <Checkbox text="accept user agreements" onClickHandler={() => {
+                        setCheckboxState(!checkboxState);
+                        console.log(checkboxState);
+                    }}/>
                 </ErrorWindow>
                 <div className="button-to-right">
                     <SubmitButton type="submit">Submit</SubmitButton>

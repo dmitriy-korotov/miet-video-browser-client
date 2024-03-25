@@ -11,4 +11,5 @@ export interface UserAuthorizationFormData {
 
 export interface UserRegistrationFormData extends UserData {
     repassword: string
+    checkbox: boolean
 }

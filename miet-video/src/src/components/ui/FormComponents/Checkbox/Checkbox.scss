@@ -1,0 +1,164 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+  
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  /* debug */
+  outline: calc(var(--debug) * 1px) dashed red;
+}
+  
+  :root {
+    /* -- Colors: */
+    --body-bg-color: hsl(221deg 16% 12%);
+    --checkbox-color: var(--first-bg-color);
+    --checkbox-color-light: var(--third-fg-color);
+    --checkbox-color-dark: var(--first-bg-color);
+  
+    /* -- Box */
+    --checkbox-border-radius: 24%;
+    --checkbox-width: 20;
+    --checkbox-height: 20;
+  
+    --text-opacity: 0.6;
+    
+    --negative-shadow-offset: 500;
+    --active-shadow-opacity: 0;
+    
+    /* -- icon */
+    --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' class='feather feather-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --icon-opacity: 0;
+    --icon-size: 1;
+    
+    /* -- easing */
+    --cubic-bezier: cubic-bezier(0.6, -1.2, 0.2, 2.2);
+  
+    /* -- misc */
+    --debug: 0;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  
+  .container { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: start;
+    grid-gap: .8em;
+    transform: scale(1)
+  }
+  
+  label[for*="checkbox"] {
+    margin-top: 10px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    
+    /* text settings */
+    color: var(--second-fg-color);
+    font-size: 0.8em;
+    letter-spacing: .1em;
+    font-weight: 400;
+    
+    transition: 0.5s ease;
+    
+    &:hover {
+        color: var(--third-fg-color);
+       
+       input[type="checkbox"] {  
+         --checkbox-color-hue: 216;
+         --checkbox-color-saturation: 14;
+        --checkbox-color-lightness: 18;
+        --checkbox-color: var(--second-fg-color);
+      }
+    }
+    
+  
+  
+    /* label:after */
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: calc(var(--checkbox-width) * 1px);
+      height: calc(var(--checkbox-height) * 1px);
+      top: 0;
+      left: 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 70%;
+      border-radius: var(--checkbox-border-radius);
+      pointer-events: none;
+      background-image: var(--icon-check);
+      filter: invert(100%);
+      transform: scale(var(--icon-size));
+      
+      /* here I couldn't animate --icon-invert */
+      transition: opacity .3s ease, filter .3s ease, transform .3s var(--cubic-bezier); 
+      
+    }
+  
+    &:has(input[type="checkbox"]:checked) {
+      &:after {
+        --icon-opacity: 1;
+        filter: invert(0%);
+        
+      }
+    }
+  
+    /* label input[type="checkbox"] */
+    & input[type="checkbox"] {
+      appearance: none;
+      cursor: pointer;
+      margin: 0;
+      background-color: var(--checkbox-color);
+      width: calc(var(--checkbox-width) * 1px);
+      height: calc(var(--checkbox-height) * 1px);
+      border: calc(calc(var(--checkbox-width) / 15) * 1px) solid var(--second-fg-color);
+      border-radius: var(--checkbox-border-radius);
+      transition: 0.5s all;
+      
+      
+      
+      &:active,
+      &:checked {
+        --checkbox-color: hsl(
+          calc(var(--checkbox-color-hue) * 1deg) /**/
+          calc(var(--checkbox-color-saturation) * 1%) /**/
+          calc(var(--checkbox-color-lightness) * 1%) /**/
+        );
+      }
+      
+      &:checked {
+          --checkbox-color-hue: 265;
+          --checkbox-color-saturation: 80;
+          --checkbox-color-lightness: 61;
+          --checkbox-color: hsl(
+            calc(var(--checkbox-color-hue) * 1deg) 
+            calc(var(--checkbox-color-saturation) * 1%) 
+            calc(var(--checkbox-color-lightness) * 1%) 
+          );
+       }    
+    }
+    
+    
+    &:active {
+      --active-shadow-opacity: 0.8;
+      &:after {
+        --icon-size: 0.7;
+      }
+      
+      & input[type="checkbox"] {
+        --negative-shadow-offset: 0;
+      }
+    }
+  }
+  
+  
