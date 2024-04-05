@@ -6,5 +6,6 @@
     --second-fg-color: #400072;
     --third-fg-color: #600095;
 
+    --error-color-dark: rgb(113, 44, 44);
     --error-color: rgb(213, 58, 58);
 }

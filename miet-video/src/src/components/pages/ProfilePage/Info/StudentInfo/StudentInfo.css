@@ -19,6 +19,21 @@
     color: var(--third-fg-color);
 }
 
+.log-out {
+    cursor: pointer;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    color: var(--error-color-dark);
+
+    transition: 0.5s ease;
+}
+
+.log-out:hover {
+    color: var(--error-color);
+}
+
 @media screen and (max-width: 600px) {
     .grid-info {
         grid-template-columns: auto;

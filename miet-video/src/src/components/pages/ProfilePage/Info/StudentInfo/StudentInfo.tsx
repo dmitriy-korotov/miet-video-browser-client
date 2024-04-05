@@ -22,6 +22,9 @@ const StudentInfo: NextPage<{ studentData: StudentData }> = ({ studentData }) =>
                 <InfoElementBlock title="Record bool ID" value={studentData.record_book_id}/>
                 <InfoElementBlock title="Year" value={studentData.year}/>
             </div>
+            <div className="log-out">
+                <span>Log out</span>
+            </div>
         </div>
     );
 }

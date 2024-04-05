@@ -1,10 +1,14 @@
 import UnregistratedBlockBlock from "./UnregistatedBlock/UnregistatedBlock";
+import UserProfileBlock from "./UserProfileBlock/UserProfileBlock";
 
 
 
 const AuthorizationBlock = () => {
+
+    const isAuntificated = true;
+
     return (
-        <UnregistratedBlockBlock/>
+        isAuntificated ? <UserProfileBlock username="Dima"/> : <UnregistratedBlockBlock/>
     );
 }
 

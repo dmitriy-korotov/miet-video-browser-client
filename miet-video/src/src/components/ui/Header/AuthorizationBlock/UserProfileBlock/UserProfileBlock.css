@@ -1,0 +1,32 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+.proflie-block-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;  
+}
+
+.proflie-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.log-out-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    .proflie-block-wrapper {
+        display: none;  
+    }
+}

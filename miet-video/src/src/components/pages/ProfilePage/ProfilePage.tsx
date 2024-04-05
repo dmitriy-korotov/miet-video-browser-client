@@ -1,4 +1,4 @@
-import HeaderProvider from "../../providers/MainHeaderProvider/MainHeaderProvider";
+import OnlyLogoHeaderProvider from "@/src/components/providers/OnlyLogoHeaderProvider/OnlyLogoHeaderProvider";
 import SideBarProvider from "../../providers/SideBarProvider/SideBarProvider";
 import StudentInfo from "./Info/StudentInfo/StudentInfo";
 import Avatar from "./Avatar/Avatar";
@@ -12,7 +12,7 @@ import "@/src/components/pages/ProfilePage/ProfilePage.css";
 
 const ProfilePage = () => {
     return (
-        <HeaderProvider>
+        <OnlyLogoHeaderProvider>
             <SideBarProvider pageName="profile">
                 <div className="profile-wrapper">
                     <div className="profile">
@@ -35,7 +35,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </SideBarProvider>
-        </HeaderProvider>
+        </OnlyLogoHeaderProvider>
     );
 }
 
