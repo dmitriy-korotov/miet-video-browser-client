@@ -1,0 +1,26 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+.grid-info {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: left;
+
+    column-gap: 50px;
+    row-gap: 10px;
+}
+
+#username {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    font-size: 1.4em;
+    color: var(--third-fg-color);
+}
+
+@media screen and (max-width: 600px) {
+    .grid-info {
+        grid-template-columns: auto;
+    }
+}

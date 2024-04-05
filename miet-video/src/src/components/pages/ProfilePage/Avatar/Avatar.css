@@ -1,0 +1,7 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+.avatar {
+    border-radius: 50%;
+    box-sizing: border-box;
+    /*border: solid 3px var(--second-fg-color);*/
+}

@@ -1,5 +1,8 @@
-export interface UserData {
-    username: string,
+export interface ShortUserData {
+    username: string
+}
+
+export interface UserData extends ShortUserData {
     login: string,
     password: string
 }

@@ -1,0 +1,28 @@
+@import url("/miet-video/src/src/assets/css/colors.css");
+
+.info-block {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.info-block:hover .title-info-block {
+    color: var(--third-fg-color);
+}
+
+.title-info-block {
+    font-size: 1.3em;
+    color: var(--second-fg-color);
+    font-weight: bold;
+
+    transition: 0.5s color ease;
+}
+
+.value-info-block {
+    font-size: 1.2em;
+    color: var(--second-fg-color);
+}
