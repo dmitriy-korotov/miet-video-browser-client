@@ -4,20 +4,25 @@ import Link from "next/link";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormEventHandler } from "react";
+import { useRouter } from "next/navigation";
 
 import FormWrapper from "@/src/components/ui/FormComponents/FormWrapper/FormWrapper";
 import SubmitButton from "@/src/components/ui/FormComponents/SubmitButton/SubmitButton";
 import TextField from "@/src/components/ui/FormComponents/TextField/TextField";
+import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 
 import { UserAuthorizationFormData } from "@/src/types/user/User";
 import { ValidateLogin, ValidatePassword } from "@/src/scripts/validations/FormValidations";
+import useAuth from "@/src/hooks/UseAuth";
 
 import "@/src/components/pages/AuthorizationPage/AuthoruzationForm/AuthorizationForm.css";
-import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 
 
 
 const AuthorizationForm = () => {
+
+    const { Auntificate } = useAuth();
+    const { push } = useRouter();
 
     const {
         register,
@@ -32,6 +37,8 @@ const AuthorizationForm = () => {
         if (!handleInput(data)) {
             return;
         }
+        Auntificate("token");
+        push("/");
         console.log(data);
     }
 

@@ -1,14 +1,15 @@
+'use client';
+
+import useAuth from "@/src/hooks/UseAuth";
 import UnregistratedBlockBlock from "./UnregistatedBlock/UnregistatedBlock";
 import UserProfileBlock from "./UserProfileBlock/UserProfileBlock";
 
 
 
 const AuthorizationBlock = () => {
-
-    const isAuntificated = true;
-
+    const { IsAuntificated } = useAuth();
     return (
-        isAuntificated ? <UserProfileBlock username="Dima"/> : <UnregistratedBlockBlock/>
+        IsAuntificated() ? <UserProfileBlock username="Dima"/> : <UnregistratedBlockBlock/>
     );
 }
 

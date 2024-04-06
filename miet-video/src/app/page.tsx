@@ -1,5 +1,5 @@
 import HomePage from "@/src/components/pages/HomePage/HomePage";
-import { AuthProvider } from "@/src/components/providers/AuthProvider/AuthProvider";
+import AuthProvider from "@/src/components/providers/AuthProvider/AuthProvider";
 
 
 

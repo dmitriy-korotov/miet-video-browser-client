@@ -1,12 +1,22 @@
+'use client';
+
 import { StudentData } from "@/src/types/student/Student";
 import { NextPage } from "next";
+import { useRouter } from "next/navigation";
+
+import InfoElementBlock from "./InfoElementBlock/InfoElementBlock";
+import useAuth from "@/src/hooks/UseAuth";
 
 import "@/src/components/pages/ProfilePage/Info/StudentInfo/StudentInfo.css";
-import InfoElementBlock from "./InfoElementBlock/InfoElementBlock";
+
 
 
 
 const StudentInfo: NextPage<{ studentData: StudentData }> = ({ studentData }) => {
+
+    const { LogOut } = useAuth();
+    const { push } = useRouter();
+
     return (
         <div className="info">
             <div id="username">
@@ -22,7 +32,10 @@ const StudentInfo: NextPage<{ studentData: StudentData }> = ({ studentData }) =>
                 <InfoElementBlock title="Record bool ID" value={studentData.record_book_id}/>
                 <InfoElementBlock title="Year" value={studentData.year}/>
             </div>
-            <div className="log-out">
+            <div className="log-out" onClick={event => {
+                LogOut();
+                push("/"); 
+            }}>
                 <span>Log out</span>
             </div>
         </div>
