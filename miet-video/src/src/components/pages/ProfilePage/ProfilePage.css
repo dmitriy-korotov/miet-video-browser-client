@@ -24,3 +24,7 @@
 
     border: 2px solid var(--second-fg-color);
 }
+
+.no-loaded {
+    color: var(--error-color-dark);
+}
