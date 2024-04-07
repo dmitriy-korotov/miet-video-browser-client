@@ -18,12 +18,14 @@ import { UsersService } from "@/src/services/UsersService";
 
 import "@/src/components/pages/AuthorizationPage/AuthoruzationForm/AuthorizationForm.css";
 import LoadingComponent from "@/src/components/ui/LoadingComponent/LoadingComponent";
+import { useAlert } from "@/src/hooks/UseAlert";
 
 
 
 const AuthorizationForm = () => {
 
     const [ isLoading, setLoading ] = useState(false);
+    const { Alert } = useAlert();
     const { Auntificate } = useAuth();
     const { push } = useRouter();
 
@@ -44,7 +46,7 @@ const AuthorizationForm = () => {
         let result = await UsersService.AuthorizateUser(data);
         setLoading(false);
         if (!result.HasValue()) {
-            alert(result.Error());
+            Alert("ERROR:", result.Error() || "");
         } else {
             Auntificate(result.Value() || "");
             push("/");

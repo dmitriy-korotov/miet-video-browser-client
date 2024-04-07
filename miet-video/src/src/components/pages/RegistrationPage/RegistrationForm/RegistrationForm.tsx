@@ -10,18 +10,23 @@ import { UserRegistrationFormData } from "@/src/types/user/User";
 import { FormEventHandler, useState } from "react";
 import { ValidateLogin, ValidatePassword, ValidateRepassword, ValidateUsername } from "@/src/scripts/validations/FormValidations";
 
-import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
 import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
 import Checkbox from "@/src/components/ui/FormComponents/Checkbox/Checkbox";
 import { UsersService } from "@/src/services/UsersService";
 import useAuth from "@/src/hooks/UseAuth";
 import { useRouter } from "next/navigation";
+import { useAlert } from "@/src/hooks/UseAlert";
+import LoadingComponent from "@/src/components/ui/LoadingComponent/LoadingComponent";
+
+import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
+
 
 
 
 const RegistrationForm = () => {
 
-    const [ loaded, setLoaded ] = useState(false);
+    const { Alert } = useAlert();
+    const [ isLoading, setLoading ] = useState(false);
     const [ checkboxState, setCheckboxState ] = useState(true);
     const { Auntificate } = useAuth();
     const { push } = useRouter();
@@ -40,11 +45,11 @@ const RegistrationForm = () => {
         if (!handleInput(data)) {
             return;
         }
-        setLoaded(true);
+        setLoading(true);
         let result = await UsersService.RegistrateUser(data);
-        setLoaded(false);
+        setLoading(false);
         if (!result.HasValue()) {
-            alert(result.Error());
+            Alert("ERROR:", result.Value() || "");
         } else {
             Auntificate(result.Value() || "");
             push("/");
@@ -118,47 +123,50 @@ const RegistrationForm = () => {
     }
 
     return (
-        <FormWrapper formTitle="Registration">
-            <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
-                <ErrorWindow message={errors.username?.message}>
-                    <TextField label="Input username:"
-                            type="text" name="username"
-                            placeholder="example : dmitry2004"
-                            hasError={errors.username ? true : false}
-                            args={ register("username") }/>    
-                </ErrorWindow>
-                <ErrorWindow message={errors.login?.message}>
-                    <TextField label="Input login:"
-                            type="text" name="login"
-                            placeholder="example : 1234567"
-                            hasError={errors.login ? true : false}
-                            args={ register("login") }/>    
-                </ErrorWindow>
-                <ErrorWindow message={errors.password?.message}>
-                    <TextField label="Input password:"
-                            type="password" name="pass"
-                            placeholder="input password..."
-                            hasError={errors.password ? true : false}
-                            args={ register("password") }/>
-                </ErrorWindow>
-                <ErrorWindow message={errors.repassword?.message}>
-                    <TextField label="Repeat password:"
-                            type="password" name="repass"
-                            placeholder="input password..."
-                            hasError={errors.repassword ? true : false}
-                            args={ register("repassword") }/>
-                </ErrorWindow>
-                <ErrorWindow message={errors.checkbox?.message}>
-                    <Checkbox text="accept user agreements" onClickHandler={() => {
-                        setCheckboxState(!checkboxState);
-                        console.log(checkboxState);
-                    }}/>
-                </ErrorWindow>
-                <div className="button-to-right">
-                    <SubmitButton type="submit">Submit</SubmitButton>
-                </div>
-            </form> 
-        </FormWrapper>
+        <>
+            { isLoading ? <LoadingComponent/> : <></> }
+            <FormWrapper formTitle="Registration">
+                <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
+                    <ErrorWindow message={errors.username?.message}>
+                        <TextField label="Input username:"
+                                type="text" name="username"
+                                placeholder="example : dmitry2004"
+                                hasError={errors.username ? true : false}
+                                args={ register("username") }/>    
+                    </ErrorWindow>
+                    <ErrorWindow message={errors.login?.message}>
+                        <TextField label="Input login:"
+                                type="text" name="login"
+                                placeholder="example : 1234567"
+                                hasError={errors.login ? true : false}
+                                args={ register("login") }/>    
+                    </ErrorWindow>
+                    <ErrorWindow message={errors.password?.message}>
+                        <TextField label="Input password:"
+                                type="password" name="pass"
+                                placeholder="input password..."
+                                hasError={errors.password ? true : false}
+                                args={ register("password") }/>
+                    </ErrorWindow>
+                    <ErrorWindow message={errors.repassword?.message}>
+                        <TextField label="Repeat password:"
+                                type="password" name="repass"
+                                placeholder="input password..."
+                                hasError={errors.repassword ? true : false}
+                                args={ register("repassword") }/>
+                    </ErrorWindow>
+                    <ErrorWindow message={errors.checkbox?.message}>
+                        <Checkbox text="accept user agreements" onClickHandler={() => {
+                            setCheckboxState(!checkboxState);
+                            console.log(checkboxState);
+                        }}/>
+                    </ErrorWindow>
+                    <div className="button-to-right">
+                        <SubmitButton type="submit">Submit</SubmitButton>
+                    </div>
+                </form> 
+            </FormWrapper>
+        </>
     );
 }
 

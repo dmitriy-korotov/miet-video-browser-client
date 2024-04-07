@@ -1,4 +1,4 @@
-import Expected from "../types/expected";
+import Expected from "../types/Expected";
 import { StudentData } from "../types/student/Student";
 import { Subject } from "../types/subject/Subject";
 
@@ -6,7 +6,7 @@ import { Subject } from "../types/subject/Subject";
 
 class TStudentsService {
 
-    api = "http://localhost:8080";
+    api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
     async GetStudentInfo(token: string): Promise<Expected<StudentData, string>> {
@@ -24,7 +24,7 @@ class TStudentsService {
     
             if (!response.ok) {
                 console.log(jsonBody);
-                return new Expected({ error: jsonBody["error"]["message"] });
+                return new Expected({ error: jsonBody["error"]["error_message"] });
             }
             let student: StudentData = {
                 username: jsonBody["full_name"],
@@ -58,7 +58,7 @@ class TStudentsService {
     
             if (!response.ok) {
                 console.log(jsonBody);
-                return new Expected({ error: jsonBody["error"]["message"] });
+                return new Expected({ error: jsonBody["error"]["error_message"] });
             }
     
             let subject: Subject = {

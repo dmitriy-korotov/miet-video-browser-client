@@ -5,7 +5,7 @@ import Expected from "../types/Expected";
 
 class TUsersService {
 
-    api = "http://localhost:8080";
+    api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
     async RegistrateUser(userData: UserData): Promise<Expected<string, string>> {
@@ -23,11 +23,17 @@ class TUsersService {
     
             if (!response.ok) {
                 console.log(jsonBody);
-                return new Expected({ error: jsonBody["error"]["message"] });
+                if (response.status == 401) {
+                    return new Expected({ error: "User with such login and password is not registrated in Orioks" });
+                } else if (response.status == 409) {
+                    return new Expected({ error: "User such user is already registrated" });
+                } else {
+                    return new Expected({ error: "Unexpected server error" });
+                }
             }
             return new Expected({ value: jsonBody["token"] });
         } catch (ex) {
-            return new Expected({ error: JSON.stringify(ex) });
+            return new Expected({ error: "Server is not response" });
         }
     }
 
@@ -41,16 +47,16 @@ class TUsersService {
                 },
                 body: JSON.stringify(data)
             });
-    
+
             let jsonBody = await response.json();
     
             if (!response.ok) {
                 console.log(jsonBody);
-                return new Expected({ error: jsonBody["error"]["message"] });
+                return new Expected({ error: jsonBody["error"]["error_message"] });
             }
             return new Expected({ value: jsonBody["token"] });
         } catch (ex) {
-            return new Expected({ error: JSON.stringify(ex) });
+            return new Expected({ error: "Server is not response" });
         }
     }
 
@@ -69,7 +75,7 @@ class TUsersService {
     
             if (!response.ok) {
                 console.log(jsonBody);
-                return new Expected({ error: jsonBody["error"]["message"] });
+                return new Expected({ error: jsonBody["error"]["error_message"] });
             }
             return new Expected({ value: jsonBody["token"] });
         } catch (ex) {

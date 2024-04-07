@@ -1,3 +1,4 @@
+import AlertProvider from "../../providers/AlertProvider/AlertProvider";
 import OnlyLogoHeaderProvider from "../../providers/OnlyLogoHeaderProvider/OnlyLogoHeaderProvider";
 import AuthorizationForm from "./AuthoruzationForm/AuthorizationForm";
 
@@ -8,11 +9,13 @@ import "@/src/components/pages/AuthorizationPage/AuthorizationPage.css";
 
 const RegistrationPage = () => {
     return (
-        <OnlyLogoHeaderProvider>
-            <div id="form-wrapper">
-                <AuthorizationForm/>
-            </div>
-        </OnlyLogoHeaderProvider>
+        <AlertProvider>
+            <OnlyLogoHeaderProvider>
+                <div id="form-wrapper">
+                    <AuthorizationForm/>
+                </div>
+            </OnlyLogoHeaderProvider>
+        </AlertProvider>
     );
 }
 
