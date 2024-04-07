@@ -12,7 +12,7 @@
     background-color: var(--second-bg-color);
     font-size: 18px;
 
-    transition: 0.5s;
+    transition: 0.5s color;
 
     font-size: 1.4em;
 }

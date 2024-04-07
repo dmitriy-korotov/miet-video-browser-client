@@ -7,7 +7,7 @@ export interface StudentData extends ShortUserData {
     group: string,
     departament: string,
     semester: number,
-    record_book_id: number
+    record_book_id: number,
     study_direction: string,
     study_profile: string,
     year: string

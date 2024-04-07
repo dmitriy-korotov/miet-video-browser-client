@@ -27,7 +27,7 @@
     padding: 30px 3% 30px 3%;
     width: 300px;
 
-    transition: 0.5s;
+    transition: 0.5s ease;
 }
 
 .form-wrapper:hover {
