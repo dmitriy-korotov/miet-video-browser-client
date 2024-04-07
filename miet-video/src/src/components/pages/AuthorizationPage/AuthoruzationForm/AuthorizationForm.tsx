@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormEventHandler } from "react";
+import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import FormWrapper from "@/src/components/ui/FormComponents/FormWrapper/FormWrapper";
@@ -14,13 +14,16 @@ import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWin
 import { UserAuthorizationFormData } from "@/src/types/user/User";
 import { ValidateLogin, ValidatePassword } from "@/src/scripts/validations/FormValidations";
 import useAuth from "@/src/hooks/UseAuth";
+import { UsersService } from "@/src/services/UsersService";
 
 import "@/src/components/pages/AuthorizationPage/AuthoruzationForm/AuthorizationForm.css";
+import LoadingComponent from "@/src/components/ui/LoadingComponent/LoadingComponent";
 
 
 
 const AuthorizationForm = () => {
 
+    const [ isLoading, setLoading ] = useState(false);
     const { Auntificate } = useAuth();
     const { push } = useRouter();
 
@@ -33,13 +36,19 @@ const AuthorizationForm = () => {
         formState: { errors },
       } = useForm<UserAuthorizationFormData>();
 
-      const onSubmit: SubmitHandler<UserAuthorizationFormData> = (data) => {
+      const onSubmit: SubmitHandler<UserAuthorizationFormData> = async (data) => {
         if (!handleInput(data)) {
             return;
         }
-        Auntificate("token");
-        push("/");
-        console.log(data);
+        setLoading(true);
+        let result = await UsersService.AuthorizateUser(data);
+        setLoading(false);
+        if (!result.HasValue()) {
+            alert(result.Error());
+        } else {
+            Auntificate(result.Value() || "");
+            push("/");
+        }
     }
 
     const handleInput = (data: UserAuthorizationFormData): boolean => {
@@ -67,30 +76,33 @@ const AuthorizationForm = () => {
     }
 
     return (
-        <FormWrapper formTitle="Authorization">
-            <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
-                <ErrorWindow message={errors.login?.message}>
-                    <TextField label="Input login:"
-                                type="text" name="login"
-                                placeholder="input login..."
-                                hasError={errors.login ? true : false}
-                                args={ register("login") }/>
-                </ErrorWindow>
-                <ErrorWindow message={errors.password?.message}>
-                    <TextField label="Input password:"
-                            type="password" name="password"
-                            placeholder="input password..."
-                            hasError={errors.password ? true : false}
-                            args={ register("password") }/>
-                </ErrorWindow>
-                <div className="button-to-right">
-                    <SubmitButton type="submit">Submit</SubmitButton>
-                </div>
-                <Link href="/registration" className="ref-to-registrate">
-                    <span>Is not registrated yet?</span>
-                </Link>
-            </form>
-        </FormWrapper>
+        <>
+        { isLoading ? <LoadingComponent/> : <></> }
+            <FormWrapper formTitle="Authorization">
+                <form onSubmit={handleSubmit(onSubmit)} onChange={onChange}>
+                    <ErrorWindow message={errors.login?.message}>
+                        <TextField label="Input login:"
+                                    type="text" name="login"
+                                    placeholder="input login..."
+                                    hasError={errors.login ? true : false}
+                                    args={ register("login") }/>
+                    </ErrorWindow>
+                    <ErrorWindow message={errors.password?.message}>
+                        <TextField label="Input password:"
+                                type="password" name="password"
+                                placeholder="input password..."
+                                hasError={errors.password ? true : false}
+                                args={ register("password") }/>
+                    </ErrorWindow>
+                    <div className="button-to-right">
+                        <SubmitButton type="submit">Submit</SubmitButton>
+                    </div>
+                    <Link href="/registration" className="ref-to-registrate">
+                        <span>Is not registrated yet?</span>
+                    </Link>
+                </form>
+            </FormWrapper>
+        </>
     );
 }
 

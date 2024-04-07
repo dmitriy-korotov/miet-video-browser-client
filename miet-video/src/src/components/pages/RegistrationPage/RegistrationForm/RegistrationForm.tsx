@@ -12,14 +12,19 @@ import { ValidateLogin, ValidatePassword, ValidateRepassword, ValidateUsername }
 
 import "@/src/components/pages/RegistrationPage/RegistrationForm/RegistrationForm.css";
 import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
-import { Router } from "next/router";
 import Checkbox from "@/src/components/ui/FormComponents/Checkbox/Checkbox";
+import { UsersService } from "@/src/services/UsersService";
+import useAuth from "@/src/hooks/UseAuth";
+import { useRouter } from "next/navigation";
 
 
 
 const RegistrationForm = () => {
 
+    const [ loaded, setLoaded ] = useState(false);
     const [ checkboxState, setCheckboxState ] = useState(true);
+    const { Auntificate } = useAuth();
+    const { push } = useRouter();
 
     const {
         register,
@@ -35,20 +40,15 @@ const RegistrationForm = () => {
         if (!handleInput(data)) {
             return;
         }
-        /*
-        const response = await fetch("http://localhost:8080/v1/users", {
-            mode: 'no-cors',
-            method: "POST",
-            body: JSON.stringify({
-                username: data.username,
-                login: data.login,
-                password: data.password
-            })
-        });*/
-
-        alert("success");
-
-        console.log(data);
+        setLoaded(true);
+        let result = await UsersService.RegistrateUser(data);
+        setLoaded(false);
+        if (!result.HasValue()) {
+            alert(result.Error());
+        } else {
+            Auntificate(result.Value() || "");
+            push("/");
+        }
     }
 
     const handleInput = (data: UserRegistrationFormData): boolean => {
