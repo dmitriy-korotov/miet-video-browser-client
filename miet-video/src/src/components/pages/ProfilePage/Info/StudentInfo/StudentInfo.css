@@ -1,6 +1,7 @@
 @import url("/miet-video/src/src/assets/css/colors.css");
 
 .grid-info {
+    max-width: 600px;
     display: grid;
     grid-template-columns: auto auto;
     justify-items: left;

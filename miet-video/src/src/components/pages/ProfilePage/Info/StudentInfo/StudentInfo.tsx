@@ -25,7 +25,7 @@ const StudentInfo: NextPage<{ studentData: StudentData }> = ({ studentData }) =>
             <div className="grid-info">
                 <InfoElementBlock title="Full name" value={studentData.full_name}/>
                 <InfoElementBlock title="Group" value={studentData.group}/>
-                <InfoElementBlock title="Departament" value={studentData.departament}/>
+                <InfoElementBlock title="Department" value={studentData.department}/>
                 <InfoElementBlock title="Study direction" value={studentData.study_direction}/>
                 <InfoElementBlock title="Study profile" value={studentData.study_profile}/>
                 <InfoElementBlock title="Semester" value={studentData.semester}/>

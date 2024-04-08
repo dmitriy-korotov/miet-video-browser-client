@@ -11,17 +11,17 @@ class TStudentsService {
 
     async GetStudentInfo(token: string): Promise<Expected<StudentData, string>> {
         try {
-            const response = await fetch(this.api + "/v1/student", {
-                method: "GET",
+            const response = await fetch(this.api + "/v1/student/info", {
+                method: "POST",
                 headers: {
                     Accept: 'application/json',
                     UserAgent: this.userAgent
                 },
-                body: JSON.stringify({ token: token })
+                body: JSON.stringify({ session_token: token })
             });
     
             let jsonBody = await response.json();
-    
+            
             if (!response.ok) {
                 console.log(jsonBody);
                 return new Expected({ error: jsonBody["error"]["error_message"] });
@@ -30,7 +30,7 @@ class TStudentsService {
                 username: jsonBody["full_name"],
                 full_name: jsonBody["full_name"],
                 group: jsonBody["group"],
-                departament: jsonBody["departament"],
+                department: jsonBody["department"],
                 semester: jsonBody["semester"],
                 record_book_id: jsonBody["record_book_id"],
                 study_direction: jsonBody["study_direction"],
@@ -39,7 +39,8 @@ class TStudentsService {
             }
             return new Expected({ value: student });
         } catch (ex) {
-            return new Expected({ error: JSON.stringify(ex) });
+            console.log(ex);
+            return new Expected({ error: "Server is not response" });
         }
     }
 
@@ -51,7 +52,7 @@ class TStudentsService {
                     Accept: 'application/json',
                     UserAgent: this.userAgent
                 },
-                body: JSON.stringify({ token: token })
+                body: JSON.stringify({ session_token: token })
             });
             
             let jsonBody = await response.json();
@@ -68,7 +69,7 @@ class TStudentsService {
             }
             return new Expected({ value: subject });
         } catch (ex) {
-            return new Expected({ error: JSON.stringify(ex) });
+            return new Expected({ error: "Server is not response" });
         }
     }
     

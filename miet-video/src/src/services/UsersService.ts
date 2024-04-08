@@ -49,12 +49,12 @@ class TUsersService {
             });
 
             let jsonBody = await response.json();
-    
+            console.log(jsonBody);
             if (!response.ok) {
                 console.log(jsonBody);
                 return new Expected({ error: jsonBody["error"]["error_message"] });
             }
-            return new Expected({ value: jsonBody["token"] });
+            return new Expected({ value: jsonBody["session_token"] });
         } catch (ex) {
             return new Expected({ error: "Server is not response" });
         }

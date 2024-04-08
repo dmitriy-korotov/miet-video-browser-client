@@ -49,7 +49,7 @@ const RegistrationForm = () => {
         let result = await UsersService.RegistrateUser(data);
         setLoading(false);
         if (!result.HasValue()) {
-            Alert("ERROR:", result.Value() || "");
+            Alert("ERROR:", result.Error() || "");
         } else {
             Auntificate(result.Value() || "");
             push("/");

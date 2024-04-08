@@ -22,7 +22,7 @@ const ProfilePage = () => {
     const [ isLoading, setIsLoding ] = useState(false);
     const { GetToken } = useAuth();
 
-    let student: StudentData = {
+    let initialStudent: StudentData = {
             username: "Dima",
             full_name: "saada",
             group: "PIN-22",
@@ -30,9 +30,11 @@ const ProfilePage = () => {
             study_profile: "Profile",
             year: "2022-2026",
             semester: 4,
-            departament: "Departament",
+            department: "Department",
             record_book_id: 23432
     };
+
+    const [ student, setStudent ] = useState(initialStudent);
 
     useEffect(() => {
         async function GetStudentInfo() {
@@ -40,7 +42,7 @@ const ProfilePage = () => {
             let result = await StudentsService.GetStudentInfo(GetToken());
             setIsLoding(false); 
             if (result.HasValue()) {
-                student = result.Value() || student;
+                setStudent(result.Value() || student);
                 setLoaded(true);
             }      
         }
@@ -62,7 +64,7 @@ const ProfilePage = () => {
                                 <StudentInfo studentData={student}/>
                             </div>
                         </> :
-                        <span className="no-loaded">Can't load student information</span> }
+                        isLoading ? <></> : <span className="no-loaded">Can't load student information</span> }
                     </div>
                 </div>
             </SideBarProvider>
