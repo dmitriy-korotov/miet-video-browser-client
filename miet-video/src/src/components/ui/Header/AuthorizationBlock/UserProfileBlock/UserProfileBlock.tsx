@@ -23,7 +23,7 @@ const UserProfileBlock: NextPage<{ username: string, logoSrc?: string }> = ({ us
             <Link href={"/profile"}>
                 <HeaderButton>
                     <div className="proflie-block">
-                        <div>{username}</div>
+                        <div>{"Profile"}</div>
                         <Image src={logoSrc} width={40} height={40} alt=""/>
                     </div>
                 </HeaderButton>

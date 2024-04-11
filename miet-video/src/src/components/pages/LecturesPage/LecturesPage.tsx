@@ -1,3 +1,9 @@
+'use client';
+
+import { useEffect, useState } from "react";
+import { StudentsService } from "@/src/services/StudentsService";
+import useAuth from "@/src/hooks/UseAuth";
+
 import HeaderProvider from "../../providers/MainHeaderProvider/MainHeaderProvider";
 import SideBarProvider from "../../providers/SideBarProvider/SideBarProvider";
 import VideosList from "../../ui/VideosList/VideosList";
@@ -12,12 +18,23 @@ import "@/src/components/pages/LecturesPage/LecturesPage.css";
 
 
 
+
 const LecturesPage = () => {
 
-    const allSubjects: Subject = { title: "All", id: "0", description: "All subjects" }
+    const initialSubjects: Subject = { title: "All", id: "0", description: "All subjects" };
+    const [ subjects, setSubjects ] = useState<Array<Subject>>(new Array());
 
-    const subjects: Subject[] = [ { title: "Math", id: "1" }, { title: "C++", id: "2" }, { title: "C#", id: "3" },
-                                  { title: "Python", id: "4" }, { title: "Java", id: "5" }, { title: "Web", id: "6" } ];
+    const { GetToken } = useAuth();
+
+    useEffect(() => {
+        async function GetSubjects() {
+            let result = await StudentsService.GetStudentSubjects(GetToken());
+            if (result.HasValue()) {
+                setSubjects(result.Value() || subjects);
+            }
+        }
+        GetSubjects();
+    }, []);
 
     return (
         <HeaderProvider>
@@ -27,14 +44,14 @@ const LecturesPage = () => {
                         <div>
                             <span>Select a subject</span>
                         </div>
-                        <SubjectsList subjects={subjects} initialSelected={allSubjects}/>
+                        <SubjectsList subjects={subjects} initialSelected={initialSubjects}/>
                     </div>
                 </div>
                 <div className="total-centralize-content" style={{height: "90%", padding: "50px", boxSizing: "border-box"}}>
                     <VideosList videoList={[{ videoId: "1",
                                               videoPreview: { href: "/miet.svg", height: 270, width: 360 },
                                               videoDescription: { title: "Math 2024 sem 2 dsfsfgdfffff ffffffffffgsdfsdfsdf", date: "8 Match 2024" } },
-                                              { videoId: "1",
+                                              { videoId: "2",
                                               videoPreview: { href: "/miet.svg", height: 270, width: 360 },
                                               videoDescription: { title: "Math 2024 sem 2", date: "8 Match 2024" } }]}/>
                 </div>

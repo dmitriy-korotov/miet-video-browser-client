@@ -44,10 +44,10 @@ class TStudentsService {
         }
     }
 
-    async GetStudentSubjects(token: string): Promise<Expected<Subject, string>> {
+    async GetStudentSubjects(token: string): Promise<Expected<Array<Subject>, string>> {
         try {
-            const response = await fetch(this.api + "/v1/student/subjects", {
-                method: "GET",
+            const response = await fetch(this.api + "/v1/user/disciplines", {
+                method: "POST",
                 headers: {
                     Accept: 'application/json',
                     UserAgent: this.userAgent
@@ -61,14 +61,20 @@ class TStudentsService {
                 console.log(jsonBody);
                 return new Expected({ error: jsonBody["error"]["error_message"] });
             }
-    
-            let subject: Subject = {
-                title: jsonBody["name"],
-                id: jsonBody["name"],
-                description: jsonBody["name"]
-            }
-            return new Expected({ value: subject });
+
+            let subjects: Array<Subject> = new Array();
+            jsonBody.forEach((subjectJson: any) => {
+                let subject: Subject = {
+                    title: subjectJson["name"],
+                    id: subjectJson["id"],
+                    description: subjectJson["department"]
+                }
+                subjects.push(subject);
+            });
+            
+            return new Expected({ value: subjects });
         } catch (ex) {
+            console.log(ex);
             return new Expected({ error: "Server is not response" });
         }
     }

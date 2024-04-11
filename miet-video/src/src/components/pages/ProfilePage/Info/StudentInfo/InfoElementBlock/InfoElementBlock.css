@@ -4,10 +4,26 @@
     font-family: Comic Sans MS, Comic Sans, cursive;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     gap: 5px;
+
+    border: solid 2px var(--second-fg-color);
+    border-radius: 10px;
+
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    padding: 10px;
+
+    transition: 0.5s ease;
+}
+
+.info-block:hover {
+    background-color: var(--first-bg-color);
 }
 
 .info-block:hover .title-info-block {
@@ -16,7 +32,7 @@
 
 .title-info-block {
     font-size: 1.3em;
-    color: var(--second-fg-color);
+    color: var(--third-fg-color);
     font-weight: bold;
 
     transition: 0.5s color ease;
