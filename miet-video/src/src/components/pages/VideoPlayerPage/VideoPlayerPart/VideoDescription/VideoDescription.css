@@ -1,0 +1,35 @@
+@import url("../../../../../assets/css/colors.css");
+
+.video-description-wrapper {
+    margin-left: 30px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.video-description-title {
+    color: var(--third-fg-color);
+    font-size: 2em;
+
+    margin-top: 10px;
+}
+
+.video-description-date {
+    color: var(--second-fg-color);
+    font-size: 1.2em;
+
+    margin-top: 5px;
+}
+
+.video-description-date span {
+    color: var(--third-fg-color);
+}
+
+.video-description {
+    color: var(--second-fg-color);
+    font-size: 1.2em;
+
+    margin-top: 5px;
+}
+
+.video-description span {
+    color: var(--third-fg-color);
+}

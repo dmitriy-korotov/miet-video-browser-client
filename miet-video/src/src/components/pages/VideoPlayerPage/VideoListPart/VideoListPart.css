@@ -1,0 +1,23 @@
+.video-list {
+    align-self: flex-start;
+
+    height: 600px;
+    overflow: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-sizing: border-box;
+}
+
+.video-list::-webkit-scrollbar {
+    display: none;
+}
+
+.no-videos-more {
+    color: var(--second-fg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

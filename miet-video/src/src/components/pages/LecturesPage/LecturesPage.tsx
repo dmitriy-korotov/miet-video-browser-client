@@ -47,7 +47,7 @@ const LecturesPage = () => {
                         <SubjectsList subjects={subjects} initialSelected={initialSubjects}/>
                     </div>
                 </div>
-                <div className="total-centralize-content" style={{height: "90%", padding: "50px", boxSizing: "border-box"}}>
+                <div className="total-centralize-content" style={{minHeight: "90%", padding: "50px", boxSizing: "border-box"}}>
                     <VideosList videoList={[{ videoId: "1",
                                               videoPreview: { href: "/miet.svg", height: 270, width: 360 },
                                               videoDescription: { title: "Math 2024 sem 2 dsfsfgdfffff ffffffffffgsdfsdfsdf", date: "8 Match 2024" } },

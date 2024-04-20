@@ -1,0 +1,27 @@
+.video-payer-wrapper {
+    display: grid;
+    grid-template-columns: 65% 30%;
+
+    align-items: center;
+    justify-items: center;
+
+    gap: 3%;
+
+    width: 100%;
+    min-height: 90%;
+}
+
+@media screen and (max-width: 800px) {
+    .video-payer-wrapper {
+        display: grid;
+        grid-template-columns: 95%;
+    
+        align-items: center;
+        justify-content: center;
+    
+        gap: 0%;
+    
+        width: 100%;
+        min-height: 90%;
+    }
+}

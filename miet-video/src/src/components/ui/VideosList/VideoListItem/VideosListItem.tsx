@@ -15,7 +15,7 @@ const VideosListItem: NextPage<VideosListItemData> = (videoData) => {
 
     return (
         <div className="video-list-item-wrapper">
-            <Link href={`/player?v=${videoId}`}>
+            <Link href={`/video?v=${videoId}`}>
                 <div className="video-list-item">
                     <Image className="video-preview" src={videoPreview.href}
                            width={videoPreview.width} height={videoPreview.height}
