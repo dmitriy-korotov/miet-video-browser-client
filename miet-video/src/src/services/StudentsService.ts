@@ -15,9 +15,9 @@ class TStudentsService {
                 method: "POST",
                 headers: {
                     Accept: 'application/json',
-                    UserAgent: this.userAgent
+                    UserAgent: this.userAgent,
+                    Authorization: token
                 },
-                body: JSON.stringify({ session_token: token })
             });
     
             let jsonBody = await response.json();
@@ -27,7 +27,7 @@ class TStudentsService {
                 return new Expected({ error: jsonBody["error"]["error_message"] });
             }
             let student: StudentData = {
-                username: jsonBody["full_name"],
+                username: jsonBody["username"],
                 full_name: jsonBody["full_name"],
                 group: jsonBody["group"],
                 department: jsonBody["department"],
@@ -50,9 +50,9 @@ class TStudentsService {
                 method: "POST",
                 headers: {
                     Accept: 'application/json',
-                    UserAgent: this.userAgent
+                    UserAgent: this.userAgent,
+                    Authorization: token
                 },
-                body: JSON.stringify({ session_token: token })
             });
             
             let jsonBody = await response.json();

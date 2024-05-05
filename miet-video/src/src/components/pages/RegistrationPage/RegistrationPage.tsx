@@ -9,13 +9,11 @@ import "@/src/components/pages/RegistrationPage/RegistrationPage.css";
 
 const RegistrationPage = () => {
     return (
-        <AlertProvider>
-            <OnlyLogoHeaderProvider>
-                <div id="form-wrapper">
-                    <RegistrationForm/>
-                </div>
-            </OnlyLogoHeaderProvider>
-        </AlertProvider>
+        <OnlyLogoHeaderProvider>
+            <div id="form-wrapper">
+                <RegistrationForm/>
+            </div>
+        </OnlyLogoHeaderProvider>
     );
 }
 

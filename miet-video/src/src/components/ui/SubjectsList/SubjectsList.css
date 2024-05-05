@@ -42,7 +42,7 @@
 
 #select-button {
   position: relative;
-  height: 16px;
+  
   padding: 12px 14px;
   background: radial-gradient(var(--first-fg-color), var(--second-bg-color));
   border-radius: 4px;

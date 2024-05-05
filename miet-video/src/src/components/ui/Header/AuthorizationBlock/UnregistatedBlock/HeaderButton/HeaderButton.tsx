@@ -5,10 +5,10 @@ import "@/src/components/ui/Header/Logo/Logo.css";
 import "@/src/components/ui/Header/AuthorizationBlock/UnregistatedBlock/HeaderButton/HeaderButton.css";
 
 
-const HeaderButton: NextPage<Readonly<{children?: React.ReactNode;}>> = ({children}) => {
+const HeaderButton: NextPage<{ children: Readonly<React.ReactNode> }> = ({children}) => {
     return (
         <button className="main-logo-font header-button main-transition">
-            <span>{children}</span>
+            <div>{children}</div>
         </button>
     );
 }

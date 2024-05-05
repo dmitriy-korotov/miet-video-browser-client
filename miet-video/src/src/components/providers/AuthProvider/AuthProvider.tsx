@@ -1,5 +1,6 @@
 'use client'
 
+import { UsersService } from "@/src/services/UsersService";
 import { NextPage } from "next";
 import { createContext, useEffect, useState } from "react";
 
@@ -36,6 +37,7 @@ const AuthProvider: NextPage<{ children: Readonly<React.ReactNode> }> = ({ child
     }
 
     const LogOut = () => {
+        UsersService.LogOut(getToken());
         if (typeof window !== 'undefined') {
             localStorage.removeItem("token");
         }

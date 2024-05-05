@@ -4,7 +4,7 @@ import RegistrationPage from "@/src/components/pages/RegistrationPage/Registrati
 
 
 const Registration = () => {
-    return <AuthProvider><RegistrationPage/></AuthProvider>;
+    return <RegistrationPage/>;
 }
 
 export default Registration;

@@ -6,11 +6,9 @@ import NotAuthorizatedPageProvider from "@/src/components/providers/NotAuthoriza
 
 const Lectures = () => {   
     return (
-        <AuthProvider>
-            <NotAuthorizatedPageProvider>
-                <LecturesPage/>
-            </NotAuthorizatedPageProvider>
-        </AuthProvider>
+        <NotAuthorizatedPageProvider>
+            <LecturesPage/>
+        </NotAuthorizatedPageProvider>
     );
 }
 

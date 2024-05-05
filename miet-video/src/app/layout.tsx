@@ -1,4 +1,5 @@
-import { AuthProvider } from "@/src/components/providers/AuthProvider/AuthProvider";
+import AlertProvider from "@/src/components/providers/AlertProvider/AlertProvider";
+import AuthProvider from "@/src/components/providers/AuthProvider/AuthProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -27,7 +28,13 @@ export default function RootLayout({
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
         <link rel="icon" href="/miet.svg"/>
       </head>
-      <body className={inter.className}>{children}</body>
+      <AlertProvider>
+        <AuthProvider>
+          <body className={inter.className}>
+            {children}
+          </body>
+        </AuthProvider>
+      </AlertProvider>
     </html>
   );
 }

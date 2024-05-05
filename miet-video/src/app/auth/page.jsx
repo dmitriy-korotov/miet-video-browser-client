@@ -3,5 +3,5 @@ import AuthorizationPage from "@/src/components/pages/AuthorizationPage/Authoriz
 
 
 export default function Authorization() {
-    return <AuthProvider><AuthorizationPage/></AuthProvider>;
+    return <AuthorizationPage/>;
 }

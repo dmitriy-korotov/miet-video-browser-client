@@ -60,15 +60,15 @@ class TUsersService {
         }
     }
 
-    async LogOut(token: string) { // TODO
+    async LogOut(token: string) {
         try {
-            const response = await fetch(this.api + "/v1/auth", {
-                method: "DELETE",
+            const response = await fetch(this.api + "/v1/logout", {
+                method: "POST",
                 headers: {
                     Accept: 'application/json',
-                    UserAgent: this.userAgent
+                    UserAgent: this.userAgent,
+                    Authorization: token
                 },
-                body: JSON.stringify({ token: token })
             });
     
             let jsonBody = await response.json();
