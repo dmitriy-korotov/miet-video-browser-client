@@ -52,7 +52,9 @@ const ProfilePage = () => {
     return (
         <OnlyLogoHeaderProvider>
             <SideBarProvider pageName="profile">
-                { isLoading ? <LoadingComponent/> : <></> }
+                { isLoading ? 
+                <LoadingComponent/> 
+                :
                 <div className="profile-wrapper">
                     <div className="profile">
                         { loaded ? 
@@ -64,9 +66,10 @@ const ProfilePage = () => {
                                 <StudentInfo studentData={student}/>
                             </div>
                         </> :
-                        isLoading ? <></> : <span className="no-loaded">Can't load student information</span> }
+                        <span className="no-loaded">Can't load student information</span> }
                     </div>
-                </div>
+                </div> }
+                
             </SideBarProvider>
         </OnlyLogoHeaderProvider>
     );

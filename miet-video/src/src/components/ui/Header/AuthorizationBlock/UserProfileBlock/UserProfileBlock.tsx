@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { NextPage } from "next";
 import { useRouter } from "next/navigation";
 
+import { useEffect, useState } from "react";
+import { StudentsService } from "@/src/services/StudentsService";
+import { useAlert } from "@/src/hooks/UseAlert";
 
 import HeaderButton from "@/src/components/ui/Header/AuthorizationBlock/UnregistatedBlock/HeaderButton/HeaderButton";
 import useAuth from "@/src/hooks/UseAuth";
@@ -13,18 +15,35 @@ import "@/src/components/ui/Header/AuthorizationBlock/UserProfileBlock/UserProfi
 
 
 
-const UserProfileBlock: NextPage<{ username: string, logoSrc?: string }> = ({ username, logoSrc = "/miet.png" }) => {
+const UserProfileBlock = () => {
 
-    const { LogOut } = useAuth();
+    const { LogOut, GetToken } = useAuth();
     const { push } = useRouter();
+    const { Alert } = useAlert();
+
+    const [ userInfo, setUserInfo ] = useState({ username: "loading...", logo: "/miet.png" });
+
+    useEffect(() => {
+        async function GetUsername() {
+            let maybeUserInfo = await StudentsService.GetStudentInfo(GetToken());
+            if (!maybeUserInfo.HasValue()) {
+                Alert("ERROR", maybeUserInfo.Error() || "");
+            }
+            setUserInfo({
+                username: maybeUserInfo.Value()?.username || "username",
+                logo: "/miet.png"
+            });
+        }
+        GetUsername();
+    }, []);
 
     return (
         <div className="proflie-block-wrapper">
             <Link href={"/profile"}>
                 <HeaderButton>
                     <div className="proflie-block">
-                        <div>{username}</div>
-                        <Image src={logoSrc} width={40} height={40} alt=""/>
+                        <div>{userInfo.username}</div>
+                        <Image src={userInfo.logo} width={40} height={40} alt=""/>
                     </div>
                 </HeaderButton>
             </Link>
