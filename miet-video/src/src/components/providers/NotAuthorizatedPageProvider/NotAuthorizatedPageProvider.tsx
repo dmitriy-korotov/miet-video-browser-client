@@ -24,7 +24,8 @@ const NotAuthorizatedPageProvider: NextPage<{ children: Readonly<React.ReactNode
         isLoading ? 
         <LoadingComponent/>
         : isAuntificated ? 
-        <div onClick={event => setAuntificated(IsAuntificated())}>
+        <div onClick={event => setAuntificated(IsAuntificated())}
+        style={{height: "100%"}}>
             {children}
         </div>
          : <NotAuthorizatedPage/> 
