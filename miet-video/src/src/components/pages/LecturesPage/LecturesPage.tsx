@@ -9,7 +9,6 @@ import SideBarProvider from "../../providers/SideBarProvider/SideBarProvider";
 import VideosList from "../../ui/VideosList/VideosList";
 import SubjectsList from "../../ui/SubjectsList/SubjectsList";
 
-import { VideosListItemData } from "@/src/types/video/VideosListItemData";
 import { Subject } from "@/src/types/subject/Subject";
 import { LecturesService } from "@/src/services/LecturesService";
 import { Lecture } from "@/src/types/lecture/Lecture";
@@ -75,7 +74,7 @@ const LecturesPage = () => {
                             }}/>
                         </div>
                     </div>
-                    <div className="total-centralize-content" style={{minHeight: "90%", padding: "50px", boxSizing: "border-box"}}>
+                    <div className="total-centralize-content" style={{minHeight: "70%", padding: "50px", boxSizing: "border-box"}}>
                         <VideosList videoList={lectures}/>
                     </div>
                 </>}
