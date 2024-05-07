@@ -1,9 +1,11 @@
 export interface VideoInfo {
+    id: string,
     source: string,
-    preview: string,
+    preview?: string,
     resolution: number,
     type: string,
     title: string,
-    description: string,
+    author: string,
+    description?: string,
     date: string,
 }
