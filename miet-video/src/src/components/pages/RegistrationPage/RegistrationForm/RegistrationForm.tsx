@@ -48,11 +48,11 @@ const RegistrationForm = () => {
         setLoading(true);
         let result = await UsersService.RegistrateUser(data);
         setLoading(false);
-        if (!result.HasValue()) {
-            Alert("ERROR:", result.Error() || "");
-        } else {
+        if (result.HasValue()) {
             Auntificate(result.Value() || "");
             push("/");
+        } else {
+            Alert("ERROR:", result.Error() || "");
         }
     }
 

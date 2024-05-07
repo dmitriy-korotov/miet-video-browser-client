@@ -47,8 +47,8 @@ export const ValidatePassword = (password: string, repassword?: string): { error
     if (password.length == 0) {
         return { error: new MaybeError("Please fill password field"), isEquals: false };
     }
-    if (!(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(password))) {
-        return { error: new MaybeError("Password must contains only a-z A-Z 0-9 !@#$%^& cahracters"), isEquals: false };
+    if (!(/^[а-яА-Яa-zA-Z0-9!@#$%^&*-]{8,16}$/.test(password))) {
+        return { error: new MaybeError("Password must contains only а-я А-Я a-z A-Z 0-9 !@#$%^&- cahracters. Password lenght must be in [8, 16]"), isEquals: false };
     }
     if (password.length < 8) {
         return { error: new MaybeError("Password length must be greater then 7"), isEquals: false };

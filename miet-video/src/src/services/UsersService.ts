@@ -31,7 +31,7 @@ class TUsersService {
                     return new Expected({ error: "Unexpected server error" });
                 }
             }
-            return new Expected({ value: jsonBody["token"] });
+            return new Expected({ value: jsonBody["session_token"] });
         } catch (ex) {
             return new Expected({ error: "Server is not response" });
         }
