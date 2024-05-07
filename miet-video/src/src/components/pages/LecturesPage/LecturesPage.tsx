@@ -11,12 +11,14 @@ import SubjectsList from "../../ui/SubjectsList/SubjectsList";
 
 import { VideosListItemData } from "@/src/types/video/VideosListItemData";
 import { Subject } from "@/src/types/subject/Subject";
-
-import "@/src/assets/css/globals.css";
-import "@/src/components/pages/LecturesPage/LecturesPage.css";
 import { LecturesService } from "@/src/services/LecturesService";
 import { Lecture } from "@/src/types/lecture/Lecture";
 import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent";
+import { useAlert } from "@/src/hooks/UseAlert";
+
+import "@/src/assets/css/globals.css";
+import "@/src/components/pages/LecturesPage/LecturesPage.css";
+
 
 
 
@@ -28,7 +30,7 @@ const LecturesPage = () => {
     const [ isLoading, setIsLoading ] = useState(true);
 
     const { GetToken } = useAuth();
-
+    const { Alert } = useAlert();
 
 
     async function GetSubjects(token: string) {
@@ -44,6 +46,8 @@ const LecturesPage = () => {
         
         if (result.HasValue()) {
             setLectures(result.Value() || new Array());
+        } else {
+            Alert("ERROR", result.Error() || "Unknow error");
         }
     }
 

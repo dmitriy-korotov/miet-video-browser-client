@@ -5,6 +5,7 @@ import Player from "@/src/components/ui/Player/Player";
 import { VideoInfo } from "@/src/types/video/VideoInfo";
 import { NextPage } from "next";
 import VideoDescription from "./VideoDescription/VideoDescription";
+import { Lecture } from "@/src/types/lecture/Lecture";
 
 
 
@@ -24,13 +25,13 @@ const GetWindowHeight = (): number => {
 
 
 
-const VideoPlayerPart: NextPage<{ videoInfo: VideoInfo }> = ({videoInfo}) => {
+const VideoPlayerPart: NextPage<{ videoInfo: Lecture }> = ({videoInfo}) => {
 
     const [videoSize, setVideoSize] = useState({ width: GetWindowWidth(), height: GetWindowHeight() })
 
     const UpdateVideoSize = () => {
         const caclWidth = GetWindowWidth() * 0.6;
-        const calcHeight = Math.min(GetWindowHeight() / 2, caclWidth / videoInfo.resolution);
+        const calcHeight = Math.min(GetWindowHeight() / 2, caclWidth / videoInfo.video.resolution);
         setVideoSize({width: caclWidth, height: calcHeight});
     }
 
@@ -50,9 +51,9 @@ const VideoPlayerPart: NextPage<{ videoInfo: VideoInfo }> = ({videoInfo}) => {
 
     return (
         <div>
-            <Player videoSrc={videoInfo.source} previewSrc={videoInfo.preview}
-                    type={videoInfo.type} width={videoSize.width} height={videoSize.height}/>
-            <VideoDescription title={videoInfo.title} date={videoInfo.date} description={videoInfo.description}/>
+            <Player videoSrc={videoInfo.video.source} previewSrc={videoInfo.video.preview || "/miet.png"}
+                    type={videoInfo.video.type} width={videoSize.width} height={videoSize.height}/>
+            <VideoDescription title={videoInfo.video.title} date={videoInfo.video.date} description={videoInfo.video.description || ""}/>
         </div>
     );
 }
