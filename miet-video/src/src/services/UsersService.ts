@@ -26,7 +26,7 @@ class TUsersService {
                 if (response.status == 401) {
                     return new Expected({ error: "User with such login and password is not registrated in Orioks" });
                 } else if (response.status == 409) {
-                    return new Expected({ error: "User such user is already registrated" });
+                    return new Expected({ error: "Such user is already registrated" });
                 } else {
                     return new Expected({ error: "Unexpected server error" });
                 }
