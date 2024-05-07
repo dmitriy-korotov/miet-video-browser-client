@@ -28,13 +28,13 @@ export default function RootLayout({
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
         <link rel="icon" href="/miet.svg"/>
       </head>
-      <AlertProvider>
-        <AuthProvider>
           <body className={inter.className}>
-            {children}
+            <AlertProvider>
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+            </AlertProvider>
           </body>
-        </AuthProvider>
-      </AlertProvider>
     </html>
   );
 }
