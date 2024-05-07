@@ -43,7 +43,7 @@ const UserProfileBlock = () => {
                 <HeaderButton>
                     <div className="proflie-block">
                         <div>{userInfo.username}</div>
-                        <Image src={userInfo.logo} width={40} height={40} alt=""/>
+                        <Image src={userInfo.logo} width={40} height={40} alt="" priority={true}/>
                     </div>
                 </HeaderButton>
             </Link>

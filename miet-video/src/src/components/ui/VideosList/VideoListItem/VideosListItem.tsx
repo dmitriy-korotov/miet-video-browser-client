@@ -20,7 +20,8 @@ const VideosListItem: NextPage<VideosListItemData> = (videoData) => {
                     <Image className="video-preview" src={videoPreview.href}
                            width={videoPreview.width} height={videoPreview.height}
                            alt={videoDescription.description ? videoDescription.description : videoDescription.title}
-                           style={{ "alignSelf": "center" }} />
+                           style={{ "alignSelf": "center" }}
+                           priority={true} />
                     <VideoDescriptionBlock videoDescription={videoDescription} />
                 </div>
             </Link>

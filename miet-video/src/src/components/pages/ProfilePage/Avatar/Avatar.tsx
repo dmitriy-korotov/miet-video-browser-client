@@ -10,7 +10,8 @@ const Avatar: NextPage<{ src: string,
                          alt?: string }> = ({ src, width, height, alt = "" }) => {
     return (
         <div className="avatar">
-            <Image src={src} width={width} height={height} alt=""/>
+            <Image src={src} width={width} height={height} alt=""
+                   priority={true}/>
         </div>
     )
 }
