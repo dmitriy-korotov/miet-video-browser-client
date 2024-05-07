@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { NextPage } from "next";
 import { createContext, useEffect, useState } from "react";

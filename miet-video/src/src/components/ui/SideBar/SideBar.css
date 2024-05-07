@@ -1,4 +1,4 @@
-@import url("/miet-video/src/src/assets/css/colors.css");
+@import url("../../../assets/css/colors.css");
 
 .sidebar {
     transition: 0.5s;
@@ -154,7 +154,7 @@
     .sidebar a i{
       margin-left: -10px;
     }
-    a:hover {
+    .sidebar a:hover {
       width: 200px;
       background: inherit;
     }
