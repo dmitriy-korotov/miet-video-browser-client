@@ -14,6 +14,9 @@ import { Subject } from "@/src/types/subject/Subject";
 
 import "@/src/assets/css/globals.css";
 import "@/src/components/pages/LecturesPage/LecturesPage.css";
+import { LecturesService } from "@/src/services/LecturesService";
+import { Lecture } from "@/src/types/lecture/Lecture";
+import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent";
 
 
 
@@ -23,6 +26,8 @@ const LecturesPage = () => {
 
     const initialSubjects: Subject = { title: "All", id: "0", description: "All subjects" };
     const [ subjects, setSubjects ] = useState<Array<Subject>>(new Array());
+    const [ lectures, setLectures ] = useState<Array<Lecture>>(new Array());
+    const [ isLoading, setIsLoading ] = useState(true);
 
     const { GetToken } = useAuth();
 
@@ -33,28 +38,36 @@ const LecturesPage = () => {
                 setSubjects(result.Value() || subjects);
             }
         }
+        async function GetLectures() {
+            let result = await LecturesService.GetLectures(GetToken());
+            
+            if (result.HasValue()) {
+                setLectures(result.Value() || new Array());
+            }
+        }
         GetSubjects();
+        GetLectures();
+        setIsLoading(false);
     }, []);
 
     return (
         <HeaderProvider>
             <SideBarProvider pageName="Lectures">
-                <div className="total-centralize-content subjects-list-block">
-                    <div className="subjects-list-warapper">
-                        <div>
-                            <span>Select a subject</span>
+                { isLoading ? <LoadingComponent/>
+                : 
+                <>
+                    <div className="total-centralize-content subjects-list-block">
+                        <div className="subjects-list-warapper">
+                            <div>
+                                <span>Select a subject</span>
+                            </div>
+                            <SubjectsList subjects={subjects} initialSelected={initialSubjects}/>
                         </div>
-                        <SubjectsList subjects={subjects} initialSelected={initialSubjects}/>
                     </div>
-                </div>
-                <div className="total-centralize-content" style={{minHeight: "90%", padding: "50px", boxSizing: "border-box"}}>
-                    <VideosList videoList={[{ videoId: "1",
-                                              videoPreview: { href: "/miet.svg", height: 270, width: 360 },
-                                              videoDescription: { title: "Math 2024 sem 2 dsfsfgdfffff ffffffffffgsdfsdfsdf", date: "8 Match 2024" } },
-                                              { videoId: "2",
-                                              videoPreview: { href: "/miet.svg", height: 270, width: 360 },
-                                              videoDescription: { title: "Math 2024 sem 2", date: "8 Match 2024" } }]}/>
-                </div>
+                    <div className="total-centralize-content" style={{minHeight: "90%", padding: "50px", boxSizing: "border-box"}}>
+                        <VideosList videoList={lectures}/>
+                    </div>
+                </>}
             </SideBarProvider>
         </HeaderProvider>
     );
