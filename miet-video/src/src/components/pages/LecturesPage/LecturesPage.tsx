@@ -20,33 +20,38 @@ import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent";
 
 
 
-
-
 const LecturesPage = () => {
 
-    const initialSubjects: Subject = { title: "All", id: "0", description: "All subjects" };
+    const initialSubject: Subject = { title: "Все", id: "0", description: "All subjects" };
     const [ subjects, setSubjects ] = useState<Array<Subject>>(new Array());
     const [ lectures, setLectures ] = useState<Array<Lecture>>(new Array());
     const [ isLoading, setIsLoading ] = useState(true);
 
     const { GetToken } = useAuth();
 
+
+
+    async function GetSubjects(token: string) {
+        let result = await StudentsService.GetStudentSubjects(token);
+        if (result.HasValue()) {
+            let subjects = result.Value() || new Array();
+            subjects = [initialSubject, ...subjects];
+            setSubjects(subjects);
+        }
+    }
+    async function GetLectures(token: string, subject?: string) {
+        let result = await LecturesService.GetLectures(GetToken(), subject);
+        
+        if (result.HasValue()) {
+            setLectures(result.Value() || new Array());
+        }
+    }
+
+
+
     useEffect(() => {
-        async function GetSubjects() {
-            let result = await StudentsService.GetStudentSubjects(GetToken());
-            if (result.HasValue()) {
-                setSubjects(result.Value() || subjects);
-            }
-        }
-        async function GetLectures() {
-            let result = await LecturesService.GetLectures(GetToken());
-            
-            if (result.HasValue()) {
-                setLectures(result.Value() || new Array());
-            }
-        }
-        GetSubjects();
-        GetLectures();
+        GetSubjects(GetToken());
+        GetLectures(GetToken());
         setIsLoading(false);
     }, []);
 
@@ -61,7 +66,9 @@ const LecturesPage = () => {
                             <div>
                                 <span>Select a subject</span>
                             </div>
-                            <SubjectsList subjects={subjects} initialSelected={initialSubjects}/>
+                            <SubjectsList subjects={subjects} initialSelected={initialSubject} onSelect={subject => {
+                                GetLectures(GetToken(), (subject.id == "0" ? undefined : subject.title));
+                            }}/>
                         </div>
                     </div>
                     <div className="total-centralize-content" style={{minHeight: "90%", padding: "50px", boxSizing: "border-box"}}>

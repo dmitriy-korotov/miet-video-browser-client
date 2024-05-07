@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Subject } from "@/src/types/subject/Subject";
 
