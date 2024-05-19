@@ -55,7 +55,7 @@
 
     border-color: var(--second-fg-color);
 
-    transition: 0.5s all;
+    transition: border, color 0.5s;
 }
 
 .send-button-wrapper button:hover {

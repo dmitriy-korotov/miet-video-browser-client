@@ -19,6 +19,8 @@ import "@/src/components/pages/VideoPlayerPage/VideoPlayerPage.css";
 
 
 const VideoPlayerPage = () => {
+    const searchParams = useSearchParams();
+
     let initialLecture: Lecture = {
         subject: "Loading...",
         video: {
@@ -30,15 +32,13 @@ const VideoPlayerPage = () => {
             resolution: 4 / 3,
             type: "video/mp4",
             author: "Loading...",
-            id: "None"
+            id: searchParams.get("v") || ""
         }
     }
 
     const [ lecture, setLecture ] = useState(initialLecture);
     const { GetToken } = useAuth();
     const { Alert } = useAlert();
-
-    const searchParams = useSearchParams();
 
     const videoId = searchParams.get("v");
 

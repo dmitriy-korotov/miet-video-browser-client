@@ -1,6 +1,8 @@
 @import url("../../../../../../assets/css/colors.css");
 
 .comment-wrapper {
+    max-width: 600px; /* TODO Fix this */
+
     font-family: Comic Sans MS, Comic Sans, cursive;
 
     color: var(--second-fg-color);
@@ -41,6 +43,7 @@
 }
 
 .comment-text {
+    overflow: hidden;
     margin-top: 10px;
 }
 

@@ -76,6 +76,7 @@
   }
   
   .sidebar-body label #btn,label #cancel{
+    z-index: 10;
     position: fixed;
     top: 9.3%;
     left: 0px;

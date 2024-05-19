@@ -14,15 +14,15 @@ const CommentItem: NextPage<{comment: Comment}> = ({ comment }) => {
                 <div className="author">
                     <Image src={comment.authorAvatar} width={30} height={30} alt="" priority={true}/>
                     <div>
-                        {comment.author}
+                        <span>{comment.author}</span>
                     </div>
                 </div>
                 <div className="date">
-                    {comment.date}
+                    <span>{comment.date}</span>
                 </div>
             </div>
             <div className="comment-text">
-                {comment.text}
+                <span>{comment.text}</span>
             </div>
         </div>
     );
