@@ -6,6 +6,7 @@ import { VideoInfo } from "@/src/types/video/VideoInfo";
 import { NextPage } from "next";
 import VideoDescription from "./VideoDescription/VideoDescription";
 import { Lecture } from "@/src/types/lecture/Lecture";
+import Comments from "./Comments/Comments";
 
 
 
@@ -54,6 +55,7 @@ const VideoPlayerPart: NextPage<{ videoInfo: Lecture }> = ({videoInfo}) => {
             <Player videoSrc={videoInfo.video.source} previewSrc={videoInfo.video.preview || "/miet.png"}
                     type={videoInfo.video.type} width={videoSize.width} height={videoSize.height}/>
             <VideoDescription title={videoInfo.video.title} date={videoInfo.video.date} description={videoInfo.video.description || ""}/>
+            <Comments/>
         </div>
     );
 }

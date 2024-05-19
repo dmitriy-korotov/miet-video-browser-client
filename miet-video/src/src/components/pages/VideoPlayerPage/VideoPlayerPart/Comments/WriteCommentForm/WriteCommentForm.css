@@ -1,0 +1,66 @@
+@import url("../../../../../../assets/css/colors.css");
+
+.comment-write-title {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    color: var(--third-fg-color);
+
+    margin: 0px 0px 5px 10px;
+
+    font-size: 1.2em;
+}
+
+.input-comment {
+
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    color: var(--second-fg-color);
+
+    background: var(--second-bg-color);
+
+    border-radius: 10px;
+
+    width: 100%;
+    min-height: 50px;
+    resize: vertical;
+    padding: 15px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+
+    overflow: hidden;
+}
+
+.input-comment::placeholder {
+    color: var(--second-fg-color);
+}
+
+.send-button-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.send-button-wrapper button {
+    cursor: pointer;
+    color: var(--second-fg-color);
+
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px 50px 5px 50px;
+
+    background-color: var(--second-bg-color);
+    border: solid 1px;
+
+    border-color: var(--second-fg-color);
+
+    transition: 0.5s all;
+}
+
+.send-button-wrapper button:hover {
+    background: radial-gradient(var(--first-fg-color), var(--second-bg-color));
+
+    color: var(--third-fg-color);
+    border-color: var(--third-fg-color);
+}

@@ -1,0 +1,49 @@
+@import url("../../../../../../assets/css/colors.css");
+
+.comment-wrapper {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+    color: var(--second-fg-color);
+
+    background-color: var(--second-bg-color);
+
+    padding: 15px 30px 15px 30px;
+
+    border-radius: 30px;
+    box-sizing: border-box;
+
+    border: solid 2px transparent;
+
+    transition: 0.5s border-color;
+}
+
+.comment-wrapper:hover {
+    border-color: var(--second-fg-color);
+}
+
+.author-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    color: var(--third-fg-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.date {
+    font-size: 0.8em;
+}
+
+.comment-text {
+    margin-top: 10px;
+}
+
+.remove-bottom {
+    color: var(--error-color);
+}

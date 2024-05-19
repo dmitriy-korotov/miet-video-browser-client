@@ -1,0 +1,12 @@
+.comments-wrapper {
+    margin-top: 30px;
+}
+
+.comments-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
