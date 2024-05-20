@@ -23,6 +23,17 @@
     color: var(--third-fg-color);
 }
 
+.video-description-subject {
+    color: var(--second-fg-color);
+    font-size: 1.2em;
+
+    margin-top: 5px;
+}
+
+.video-description-subject span {
+    color: var(--third-fg-color);
+}
+
 .video-description {
     color: var(--second-fg-color);
     font-size: 1.2em;

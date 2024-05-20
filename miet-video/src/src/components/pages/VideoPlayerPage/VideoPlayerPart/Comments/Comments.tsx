@@ -58,6 +58,7 @@ const Comments: NextPage<{ videoId: string }> = ({ videoId }) => {
             
             */
 
+            console.log("New comment");
             GetComments();
         });
     }, []);

@@ -1,16 +1,13 @@
 @import url("../../../../../../assets/css/colors.css");
 
 .comment-wrapper {
-    max-width: 600px; /* TODO Fix this */
-
+    width: 600px;
     font-family: Comic Sans MS, Comic Sans, cursive;
 
     color: var(--second-fg-color);
-
     background-color: var(--second-bg-color);
 
     padding: 15px 30px 15px 30px;
-
     border-radius: 30px;
     box-sizing: border-box;
 
@@ -43,8 +40,12 @@
 }
 
 .comment-text {
-    overflow: hidden;
+    word-wrap: break-word;
     margin-top: 10px;
+}
+
+.comment-text span {
+    display: block;
 }
 
 .remove-bottom {

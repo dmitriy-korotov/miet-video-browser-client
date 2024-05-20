@@ -8,7 +8,7 @@ const Player: NextPage<{ width: number, height: number,
                          previewSrc: string, videoSrc: string,
                          type: string }> = ({ width, height, previewSrc, videoSrc, type }) => {
     return (
-      <div>
+      <div className="player-wrapper">
         <video className="player" width={width} height={height} controls preload="none" poster={previewSrc}>
             <source src={videoSrc} type={type} />   
             <track
