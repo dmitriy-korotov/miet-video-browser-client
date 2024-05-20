@@ -44,6 +44,8 @@ body {
     box-sizing: border-box;
 
     height: 40px;
+
+    overflow: hidden;
   }
 
   &:hover::after {

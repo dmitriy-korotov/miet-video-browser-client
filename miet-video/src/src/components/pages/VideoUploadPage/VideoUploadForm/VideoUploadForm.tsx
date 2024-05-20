@@ -1,5 +1,7 @@
+'use client';
+
 import { SubmitHandler, useForm } from "react-hook-form";
-import { FormEvent, FormEventHandler } from "react";
+import { FormEvent, FormEventHandler, useCallback, useEffect, useRef, useState } from "react";
 
 import FormWrapper from "@/src/components/ui/FormComponents/FormWrapper/FormWrapper";
 import TextField from "@/src/components/ui/FormComponents/TextField/TextField";
@@ -10,116 +12,171 @@ import SubjectsList from "@/src/components/ui/SubjectsList/SubjectsList";
 
 import { Subject } from "@/src/types/subject/Subject";
 import { UploadFormData } from "@/src/types/upload/UploadFormData";
-import { ValidatePreview, ValidateVideo } from "@/src/scripts/validations/FormValidations";
+import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
+import { useAlert } from "@/src/hooks/UseAlert";
+import useAuth from "@/src/hooks/UseAuth";
+import { StudentsService } from "@/src/services/StudentsService";
 
 import "@/src/assets/css/globals.css";
 import "@/src/components/pages/VideoUploadPage/VideoUploadForm/VideoUploadForm.css";
-import ErrorWindow from "@/src/components/ui/FormComponents/ErrorWindow/ErrorWindow";
+import LoadingComponent from "@/src/components/ui/LoadingComponent/LoadingComponent";
+import { LectureUploadData } from "@/src/types/lecture/Lecture";
+import { LecturesService } from "@/src/services/LecturesService";
+import { useRouter } from "next/navigation";
 
 
 
 const VideoUploadForm = () => {
 
-    const subjects: Subject[] = [ { title: "Math", id: "1" }, { title: "C++", id: "2" }, { title: "C#", id: "3" },
-                                  { title: "Python", id: "4" }, { title: "Java", id: "5" }, { title: "Web", id: "6" } ];
+    let initialSubject: Subject = {
+        title: "Предмет",
+        id: "0"
+    }
+    const [ subjects, setSubjects ] = useState<Array<Subject>>(new Array());
+    const [ isLoading, setIsLoading ] = useState(true);
+
+    const { GetToken } = useAuth();
+    const { Alert } = useAlert();
+
+
+    async function GetSubjects(token: string) {
+        let result = await StudentsService.GetStudentSubjects(token);
+        if (result.HasValue()) {
+            let subjects = result.Value() || new Array();
+            setSubjects(subjects);
+        } else {
+            Alert("ERROR:", result.Error() || "");
+        }
+    }
+
+    useEffect(() => {
+        GetSubjects(GetToken());
+        setIsLoading(false);
+    }, []);
+
+
+    const [ selectedSubject, setSelectedSubject ] = useState<string>(initialSubject.title);
+    const [ title, setTitle ] = useState<string>("");
+    const [ description, setDescription ] = useState<string>("");
+    const [ videoData, setVideoData ] = useState<File>();
+    const [ previewData, setPreviewData ] = useState<File>();
 
     const {
-    register,
-    handleSubmit,
-    setError,
-    clearErrors,
-    watch,
-    formState: { errors },
-    } = useForm<UploadFormData>();
+        register,
+        setError,
+        clearErrors,
+        handleSubmit,
+        formState: { errors },
+        } = useForm<UploadFormData>();
 
-    const getFileInputs = (data: FormEvent<HTMLFormElement>): Array<HTMLInputElement> => {
-        data.preventDefault();
+    const isMounted = useRef(false);
+    const router = useRouter();
 
-        const formData = new FormData(data.currentTarget);
+    const ClearAllErrors = () => {
+        clearErrors("subject");
+        clearErrors("VideoTitle");
+        clearErrors("description");
+        clearErrors("VideoFile");
+        clearErrors("PreviewFile");
+    }
 
-        let videoInput = data.currentTarget.childNodes.item(3).firstChild?.firstChild?.firstChild as HTMLInputElement;
-        let previewInput;
-        if (!errors.VideoFile) {
-            previewInput = data.currentTarget.childNodes.item(4).firstChild?.firstChild?.firstChild as HTMLInputElement;
-        } else {
-            previewInput = data.currentTarget.childNodes.item(4).firstChild?.firstChild?.firstChild as HTMLInputElement;
+    function ValidateInput(): boolean {
+        if (!isMounted.current) {
+            isMounted.current = true;
+            return false;
         }
 
-        return [ videoInput, previewInput ];
-    }
+        if (selectedSubject.length == 0 || selectedSubject == initialSubject.title) {
+            ClearAllErrors();
+            setError("subject", { type: "custom", message: "Subject field must be not empty" });
+            return false;
+        }
+        clearErrors("subject");
 
-    async function onSubmit(data: FormEvent<HTMLFormElement>) {
-        onChange(data);
-    }
-
-    const handleInput = (data: UploadFormData): boolean => {
-        let maybeError;
-
-        if (data.VideoTitle.length == 0) {
-            setError("VideoTitle", { type: "custom", message: "Video title must be not empty" });
+        if (title.length == 0) {
+            ClearAllErrors();
+            setError("VideoTitle", { type: "custom", message: "Title field must be not empty" });
             return false;
         }
         clearErrors("VideoTitle");
-        maybeError = ValidateVideo(data.VideoFile);
-        if (maybeError.HasError()) {
-            setError("VideoFile", { type: "custom", message: maybeError.GetErrorMessage() });
+
+        if (!videoData) {
+            ClearAllErrors();
+            setError("VideoFile", { type: "custom", message: "Video file field must be not empty" });
             return false;
         }
         clearErrors("VideoFile");
 
-        maybeError = ValidatePreview(data.PreviewFile);
-        if (maybeError.HasError()) {
-            setError("PreviewFile", { type: "custom", message: maybeError.GetErrorMessage() });
+        if (!previewData) {
+            ClearAllErrors();
+            setError("PreviewFile", { type: "custom", message: "Preview file field must be not empty" });
             return false;
         }
+        clearErrors("PreviewFile");      
+
         return true;
     }
 
-    const onChange: FormEventHandler<HTMLFormElement> = (data) => {
-        const [videoInput, previewInput] = getFileInputs(data);
-
-        if (!videoInput.files || videoInput.files.length == 0) {
-            setError("VideoFile", { type: "custom", message: "Video file field must be not empty" });
+    async function HandleSubmit() {
+        if (!ValidateInput()) {
             return;
         }
-        clearErrors("VideoFile");
-
-        if (!previewInput.files || previewInput.files.length == 0) {
-            setError("PreviewFile", { type: "custom", message: "Preview file field must be not empty" });
-            return;
+        let uploadData: LectureUploadData = {
+            subject: selectedSubject,
+            title: title,
+            description: description ? description : undefined,
+            video: btoa(videoData?.name || "null"),
+            preview: btoa(previewData?.name || "null")
         }
-        clearErrors("PreviewFile");
-
-        if (!handleInput({ VideoFile: videoInput.files[0],
-                           PreviewFile: previewInput.files[0],
-                           VideoTitle: watch("VideoTitle") })) {
-            return;
+        let result = await LecturesService.UploadLecture(uploadData, GetToken());
+        if (!result.HasValue()) {
+            Alert("ERROR:", result.Error() || "");
         }
-
-        console.log(videoInput.files[0], previewInput.files[0], watch("VideoTitle"));
+        router.push("/");  
     }
 
+    
+
+    useEffect(() => {
+        ValidateInput();
+    }, [selectedSubject, title, videoData, previewData])
+
     return (
-        <FormWrapper formTitle="Video upload">
-            <form onChange={onChange} onSubmit={onSubmit}>
-                <div className="total-centralize-content">
-                    <SubjectsList subjects={subjects} initialSelected={subjects[0]}/>
-                </div>
+        isLoading ? <LoadingComponent/>
+        :
+        <FormWrapper formTitle="Lecture upload">
+            <form onChange={ValidateInput} onSubmit={handleSubmit(HandleSubmit)}>
+                <ErrorWindow message={errors.subject?.message}>
+                    <div className="total-centralize-content">
+                        <SubjectsList subjects={subjects} initialSelected={initialSubject} onSelect={subject => {
+                            setSelectedSubject(subject.title);
+                        }}/>
+                    </div>
+                </ErrorWindow>
                 <ErrorWindow message={errors.VideoTitle?.message}>
                     <TextField label="Input video title:"
                             name="title" type="text"
                             hasError = { !!errors.VideoTitle }
                             placeholder="input title..."
-                            args={ register("VideoTitle") }/>    
+                            args={ { onInput: (event: any) => {
+                                let inputElem = event.target as HTMLInputElement;
+                                setTitle(inputElem.value);
+                            } } }/>    
                 </ErrorWindow>
                 <ErrorWindow message={errors.VideoFile?.message}>
                     <div className="file-loader-wrapper">
-                        <FileLoader name="video" placeholder="Select video" accept="video/*"/>
+                        <FileLoader name="video" placeholder="Select video" accept="video/*"
+                        onChange={file => {
+                            setVideoData(file);
+                        }}/>
                     </div>
                 </ErrorWindow>
                 <ErrorWindow message={errors.PreviewFile?.message}>
                     <div className="file-loader-wrapper">
-                        <FileLoader name="preview" placeholder="Select preview"/>
+                        <FileLoader name="preview" placeholder="Select preview" accept="image/*"
+                        onChange={file => {
+                            setPreviewData(file);
+                        }}/>
                     </div>
                 </ErrorWindow>
                 <div className="button-to-right">

@@ -26,6 +26,7 @@ const VideosList: NextPage<{videoList: Lecture[]}> = (videosListData) => {
                                                     }}
                                                     videoDescription={{
                                                         title: lecture.video.title,
+                                                        subject: lecture.subject,
                                                         date: lecture.video.date,
                                                         description: lecture.video.description
                                                     }} />

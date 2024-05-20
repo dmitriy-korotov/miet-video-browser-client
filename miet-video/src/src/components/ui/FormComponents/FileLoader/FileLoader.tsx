@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const FileLoader: NextPage<{ name: string,
                              accept?: string,
-                             placeholder?: string }> = ({ name, accept = "image/*", placeholder = "Select your file!"}) => {
+                             placeholder?: string,
+                            onChange?: (file: File) => void }> = ({ name, accept = "image/*", placeholder = "Select your file!", onChange}) => {
 
     const [ selectedFile, setSelectedFile ] = useState<File | null>(null);
 
@@ -22,6 +23,9 @@ const FileLoader: NextPage<{ name: string,
                                 return;
                             }
                             setSelectedFile(fileField.files[0]);
+                            if (onChange) {
+                                onChange(fileField.files[0]);
+                            }
                        }} />
             </div>
         </div>

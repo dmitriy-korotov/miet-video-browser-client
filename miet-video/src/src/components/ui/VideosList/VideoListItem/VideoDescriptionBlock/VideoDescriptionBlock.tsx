@@ -8,11 +8,12 @@ import "@/src/components/ui/VideosList/VideoListItem/VideoDescriptionBlock/Video
 
 const VideoDescriptionBlock: NextPage<{videoDescription: VideoDescription}> = (props) => {
 
-    const { title, date } = props.videoDescription;
+    const { title, subject, date } = props.videoDescription;
 
     return (
         <div>
             <span className="title">{title}</span>
+            <span className="subject">{subject}</span>
             <span className="date">{date}</span>
         </div>
     );

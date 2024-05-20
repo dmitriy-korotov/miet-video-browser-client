@@ -6,6 +6,7 @@ export interface VideoPreview {
 
 export interface VideoDescription {
     title: string,
+    subject: string,
     date: string,
     description?: string
 }

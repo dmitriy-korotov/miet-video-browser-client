@@ -1,6 +1,5 @@
-import { UserData, UserAuthorizationFormData } from "../types/user/User";
 import Expected from "../types/Expected";
-import { Lecture } from "../types/lecture/Lecture";
+import { Lecture, LectureUploadData } from "../types/lecture/Lecture";
 import { VideoInfo } from "../types/video/VideoInfo";
 
 
@@ -10,7 +9,7 @@ class TLecturesService {
     api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
-    async UploadLecture(lecture: Lecture, token: string): Promise<Expected<boolean, string>> {
+    async UploadLecture(lecture: LectureUploadData, token: string): Promise<Expected<boolean, string>> {
         try {
             const response = await fetch(this.api + "/v1/lectures", {
                 method: "POST",
@@ -22,10 +21,7 @@ class TLecturesService {
                 body: JSON.stringify(lecture)
             });
     
-            let jsonBody = await response.json();
-    
             if (!response.ok) {
-                console.log(jsonBody);
                 return new Expected({ error: "Unexpected server error" });
             }
             return new Expected({ value: true });
