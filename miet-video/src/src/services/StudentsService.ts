@@ -6,7 +6,7 @@ import { Subject } from "../types/subject/Subject";
 
 class TStudentsService {
 
-    api = "http://localhost:80";
+    api = "http://90.156.217.85:8080";
     userAgent = "miet-video-browser-client";
 
     async GetStudentInfo(token: string): Promise<Expected<StudentData, string>> {

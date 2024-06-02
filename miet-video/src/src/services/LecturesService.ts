@@ -6,7 +6,7 @@ import { VideoInfo } from "../types/video/VideoInfo";
 
 class TLecturesService {
 
-    api = "http://localhost:80";
+    api = "http://90.156.217.85:8080";
     userAgent = "miet-video-browser-client";
 
     async UploadLecture(lecture: LectureUploadData, token: string): Promise<Expected<boolean, string>> {
