@@ -19,4 +19,4 @@ COPY --from=builder /miet_video/.next ./.next
 COPY --from=builder /miet_video/node_modules ./node_modules
 
 EXPOSE 3000
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]

@@ -5,7 +5,8 @@ import { Comment } from "../types/comment/Comment";
 
 class TCommentsService {
 
-    api = "http://90.156.217.85:8080";
+    //api = "http://90.156.217.85:8080";
+    api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
     async WriteComment(videoId: string, text: string, token: string): Promise<Expected<boolean, string>> {

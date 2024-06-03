@@ -58,8 +58,8 @@ const VideoUploadForm = () => {
     const [ selectedSubject, setSelectedSubject ] = useState<string>(initialSubject.title);
     const [ title, setTitle ] = useState<string>("");
     const [ description, setDescription ] = useState<string>("");
-    const [ videoData, setVideoData ] = useState<File>();
-    const [ previewData, setPreviewData ] = useState<File>();
+    const [ videoData, setVideoData ] = useState<File>(new File(new Array(), ""));
+    const [ previewData, setPreviewData ] = useState<File>(new File(new Array(), ""));
 
     const {
         register,
@@ -121,13 +121,15 @@ const VideoUploadForm = () => {
         if (!ValidateInput()) {
             return;
         }
+
         let uploadData: LectureUploadData = {
             subject: selectedSubject,
             title: title,
             description: description ? description : undefined,
-            video: btoa(videoData?.name || "null"),
-            preview: btoa(previewData?.name || "null")
+            video: Buffer.from(await videoData.arrayBuffer()).toString('base64'),
+            preview: Buffer.from(await previewData.arrayBuffer()).toString('base64')
         }
+        console.log(uploadData)
         let result = await LecturesService.UploadLecture(uploadData, GetToken());
         if (!result.HasValue()) {
             Alert("ERROR:", result.Error() || "");

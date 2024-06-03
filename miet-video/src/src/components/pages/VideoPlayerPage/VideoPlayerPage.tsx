@@ -30,7 +30,8 @@ const VideoPlayerPage = () => {
             source: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
             preview: "/miet.png",
             resolution: 4 / 3,
-            type: "video/mp4",
+            video_type: "video/mp4",
+            preview_type: "image/png",
             author: "Loading...",
             id: searchParams.get("v") || ""
         }

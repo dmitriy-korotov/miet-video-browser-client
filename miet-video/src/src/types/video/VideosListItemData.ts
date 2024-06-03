@@ -1,7 +1,8 @@
 export interface VideoPreview {
     href: string,
     width: number,
-    height: number
+    height: number,
+    type: string,
 }
 
 export interface VideoDescription {

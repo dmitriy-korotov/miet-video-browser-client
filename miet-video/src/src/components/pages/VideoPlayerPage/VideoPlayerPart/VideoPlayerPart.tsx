@@ -53,7 +53,7 @@ const VideoPlayerPart: NextPage<{ videoInfo: Lecture }> = ({videoInfo}) => {
     return (
         <div>
             <Player videoSrc={videoInfo.video.source} previewSrc={videoInfo.video.preview || "/miet.png"}
-                    type={videoInfo.video.type} width={videoSize.width} height={videoSize.height}/>
+                    type={videoInfo.video.video_type} width={videoSize.width} height={videoSize.height}/>
             <VideoDescription title={videoInfo.video.title} subject={videoInfo.subject} date={videoInfo.video.date} description={videoInfo.video.description || ""}/>
             <Comments videoId={videoInfo.video.id}/>
         </div>

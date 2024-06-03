@@ -20,9 +20,10 @@ const VideosList: NextPage<{videoList: Lecture[]}> = (videosListData) => {
                                 return <VideosListItem key={lecture.video.id}
                                                     videoId={lecture.video.id}
                                                     videoPreview = {{
-                                                        href: "/miet.png",
+                                                        href: lecture.video.preview || "/miet.png",
                                                         width: 360,
-                                                        height: 270
+                                                        height: 270,
+                                                        type: lecture.video.preview_type || "image/png"
                                                     }}
                                                     videoDescription={{
                                                         title: lecture.video.title,

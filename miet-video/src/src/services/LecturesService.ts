@@ -6,7 +6,8 @@ import { VideoInfo } from "../types/video/VideoInfo";
 
 class TLecturesService {
 
-    api = "http://90.156.217.85:8080";
+    //api = "http://90.156.217.85:8080";
+    api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
     async UploadLecture(lecture: LectureUploadData, token: string): Promise<Expected<boolean, string>> {
@@ -59,7 +60,8 @@ class TLecturesService {
                     description: json_video["description"],
                     date: json_video["creation_date"],
                     resolution: 4 / 3,
-                    type: "video/mp4"
+                    video_type: "video/mp4",
+                    preview_type: "image/png"
                 }
                 lectures.push({
                     subject: json_lecture["subject"],
@@ -98,7 +100,8 @@ class TLecturesService {
                 description: json_video["description"],
                 date: json_video["creation_date"],
                 resolution: 4 / 3,
-                type: "video/mp4"
+                video_type: "video/mp4",
+                preview_type: "image/png"
             };
             return new Expected({ value: {
                 subject: jsonBody["subject"],

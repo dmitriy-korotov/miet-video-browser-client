@@ -5,7 +5,8 @@ import Expected from "../types/Expected";
 
 class TUsersService {
 
-    api = "http://90.156.217.85:8080";
+    //api = "http://90.156.217.85:8080";
+    api = "http://localhost:80";
     userAgent = "miet-video-browser-client";
 
     async RegistrateUser(userData: UserData): Promise<Expected<string, string>> {
